@@ -1,0 +1,5 @@
+.env
+node_modules
+save.md
+.parcel-cache
+dist
