@@ -1,4 +1,7 @@
-class ForecastDay {
+import Day from "./day";
+import * as helpers from "../helpers";
+
+export default class ForecastDay extends Day {
   constructor(
     low,
     high,
@@ -11,7 +14,7 @@ class ForecastDay {
     eveningTemp,
     dayTemp
   ) {
-    super(low, high, precipitation, sunrise, sunset, description, aqi);
+    super(utcNum, low, high, precipitation, sunrise, sunset, description, aqi);
     this.morningTemp = morningTemp;
     this.eveningTemp = eveningTemp;
     this.dayTemp = dayTemp;

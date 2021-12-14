@@ -1,5 +1,9 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import ForecastDay from "./classes/forecastDay";
+import CurrentDay from "./classes/currentDay";
+import * as view from "./view";
+import * as helpers from "./helpers";
 
 require("dotenv").config();
 const api = process.env.API_KEY;
@@ -33,6 +37,8 @@ const getPosition = function () {
 
 const getWeatherAirLocationData = async function () {
   try {
+    view.renderLoading();
+
     const pos = await getPosition();
     const { latitude, longitude } = pos.coords;
     const data = await Promise.all([
@@ -44,7 +50,12 @@ const getWeatherAirLocationData = async function () {
       ),
       getLocation(`https://geocode.xyz/${latitude},${longitude}?geoit=json`),
     ]);
-    console.log(data);
+    const weatherData = data[0];
+    const airQualityData = data[1];
+    const locationData = data[2];
+    console.log(weatherData);
+    console.log(airQualityData);
+    console.log(locationData);
   } catch (err) {
     console.error(err);
   }
