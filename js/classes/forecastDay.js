@@ -9,12 +9,11 @@ export default class ForecastDay extends Day {
     sunrise,
     sunset,
     description,
-    aqi,
     morningTemp,
     eveningTemp,
     dayTemp
   ) {
-    super(utcNum, low, high, precipitation, sunrise, sunset, description, aqi);
+    super(utcNum, low, high, precipitation, sunrise, sunset, description);
     this.morningTemp = morningTemp;
     this.eveningTemp = eveningTemp;
     this.dayTemp = dayTemp;

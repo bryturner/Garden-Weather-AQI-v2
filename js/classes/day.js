@@ -1,16 +1,7 @@
 import * as helpers from "../helpers";
 
 export default class Day {
-  constructor(
-    utcNum,
-    low,
-    high,
-    precipitation,
-    sunrise,
-    sunset,
-    description,
-    aqi
-  ) {
+  constructor(utcNum, low, high, precipitation, sunrise, sunset, description) {
     this.utcNum = utcNum;
     this.low = low;
     this.high = high;
@@ -18,7 +9,6 @@ export default class Day {
     this.sunrise = sunrise;
     this.sunset = sunset;
     this.description = description;
-    this.aqi = aqi;
 
     this._convertToLongDay();
     this._convertSunTimes();

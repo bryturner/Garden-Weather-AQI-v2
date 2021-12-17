@@ -14,7 +14,8 @@ export default class CurrentDay extends Day {
     feelsLike,
     currentLocation
   ) {
-    super(utcNum, low, high, precipitation, sunrise, sunset, description, aqi);
+    super(utcNum, low, high, precipitation, sunrise, sunset, description);
+    this.aqi = aqi;
     this.currentTemp = currentTemp;
     this.feelsLike = feelsLike;
     this.currentLocation = currentLocation;
