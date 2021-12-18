@@ -146,7 +146,7 @@ body {
 /* ==== Current Day ==== */
 .current-day-container {
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 1.6rem;
   border-radius: 12px;
   padding: 2rem;
   background-color: #d6ebd6;
@@ -162,9 +162,10 @@ body {
   font-size: 2.6rem;
 }
 
-.current-time {
+.current-time,
+.current-date {
   font-weight: 400;
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .icon-temp-container {
@@ -207,8 +208,8 @@ body {
   justify-content: space-between;
 }
 
-.current-date {
-  font-size: 2.2rem;
+.current-day {
+  font-size: 2.6rem;
 }
 
 .current-details-list {
@@ -297,13 +298,14 @@ body {
 
 .fahrenheit,
 .celsius {
-  font-size: 1.4rem;
+  font-weight: 400;
+  font-size: 1.8rem;
 }
 
 /* ==== Forecast Day ==== */
 .forecast-container {
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 0.8rem;
   border-radius: 12px;
   padding: 2rem;
   background-color: #d6ebd6;
@@ -319,23 +321,41 @@ body {
 .forecast-month {
   font-size: 2.8rem;
 }
+
 .forecast-day {
   font-size: 3.6rem;
 }
+
 .forecast-list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
 
+.forecast-img-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.forecast-detail {
+  font-size: 2.2rem;
+}
+
 .forecast-icon-description-container {
-  justify-self: end;
+  justify-self: center;
 }
 
 .sm-svg-icon {
   height: 9rem;
   width: 9rem;
+  display: block;
+  margin: auto;
 }
 .forecast-description {
+  text-align: center;
   font-size: 1.8rem;
 }
 .forecast-more-info {

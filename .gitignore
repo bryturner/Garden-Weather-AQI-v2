@@ -3,4 +3,4 @@ node_modules
 save.md
 .parcel-cache
 dist
-DS_Store
+.DS_Store
