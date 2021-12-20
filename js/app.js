@@ -43,7 +43,7 @@ const getWeatherAirLocationData = async function () {
     const { latitude, longitude } = pos.coords;
     const data = await Promise.all([
       getWeather(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,alerts&appid=${api}&units=imperial`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,alerts&appid=${api}&units=imperial`
       ),
       getAirQuality(
         `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitude}&lon=${longitude}&appid=${api}`

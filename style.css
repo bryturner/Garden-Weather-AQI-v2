@@ -16,7 +16,6 @@ html {
 
 body {
   background-image: url(./img/flowers.jpg);
-
   font-weight: 500;
   background-repeat: repeat;
   background-size: cover;
@@ -34,11 +33,10 @@ body {
   column-gap: 1.2rem;
 }
 
-.weather-container,
-.current-tips-container {
+.weather-container {
   background-color: #5cad5ce6;
-  padding: 4rem 2rem;
-  border-radius: 16px;
+  padding: 2rem;
+  border-radius: 12px;
   position: relative;
 }
 
@@ -46,6 +44,10 @@ body {
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
 }
 
 .flex-1 {
@@ -64,8 +66,19 @@ body {
   list-style: none;
 }
 
-.query-dis-none {
-  display: none;
+.jus-center {
+  justify-self: center;
+}
+
+.collapsed {
+  height: 0 !important;
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* ==== General Styles ==== */
@@ -86,13 +99,6 @@ body {
   color: rgb(9, 12, 170);
   text-decoration: underline;
   cursor: pointer;
-}
-
-/* ==== Combined Styles ==== */
-.current-detail-title,
-.forecast-detail-title {
-  font-size: 1.4rem;
-  color: #777;
 }
 
 /* ==== Current Weather Information ==== */
@@ -219,17 +225,44 @@ body {
   column-gap: 5rem;
 }
 
+.current-detail-title {
+  font-size: 1.4rem;
+  color: #777;
+}
+
 .current-detail {
   font-weight: 400;
   font-size: 2.2rem;
 }
 
+/* Current tips aside */
 .current-tips-container {
-  border-top: 2px solid var(--color-primary);
+  background-color: #5cad5ce6;
+  padding: 2rem;
+  border-radius: 12px;
+  position: relative;
+}
+
+.current-tips-date {
+  font-size: 2.6rem;
+  text-align: center;
+  background-color: var(--color-primary-light);
+  padding: 0.6rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
 }
 
 .current-tips-list {
-  gap: 1.2rem;
+  background-color: var(--color-primary-light);
+  padding: 2rem;
+  border-radius: 12px;
+  gap: 2rem;
+}
+
+.current-leaf-icon {
+  align-self: center;
+  font-size: 2.4rem;
+  color: var(--color-primary);
 }
 
 .current-tip {
@@ -305,70 +338,121 @@ body {
 /* ==== Forecast Day ==== */
 .forecast-container {
   margin: 0 auto;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1rem 3rem 1rem 1rem;
   background-color: #d6ebd6;
   display: grid;
-  grid-template-columns: 20fr 60fr 20fr;
-  column-gap: 7rem;
-  row-gap: 2rem;
+  grid-template-columns: 8fr 59fr 26fr 7fr;
   align-items: center;
   max-width: 126.8rem;
   box-shadow: 0.1rem 0.3rem 2rem rgba(0, 0, 0, 0.15);
 }
 
+.forecast-date {
+  border-right: 1px solid var(--color-primary);
+}
+
 .forecast-month {
-  font-size: 2.8rem;
+  font-size: 2.4rem;
+  align-self: center;
 }
 
 .forecast-day {
-  font-size: 3.6rem;
+  align-self: center;
+  font-size: 3rem;
 }
 
 .forecast-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 17fr 17fr 17fr 24fr 24fr;
+  padding-left: 1rem;
 }
 
 .forecast-img-icon {
+  align-self: center;
   height: 2.4rem;
   width: 2.4rem;
 }
 
-.flex-row {
-  display: flex;
-}
-
 .forecast-detail {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
+  font-weight: 400;
+  flex: 1;
 }
 
 .forecast-icon-description-container {
-  justify-self: center;
+  justify-self: end;
+  gap: 2rem;
 }
 
 .sm-svg-icon {
-  height: 9rem;
-  width: 9rem;
+  height: 7rem;
+  width: 7rem;
   display: block;
   margin: auto;
 }
+
 .forecast-description {
-  text-align: center;
-  font-size: 1.8rem;
+  font-weight: 400;
+  align-self: center;
+  font-size: 2rem;
 }
-.forecast-more-info {
-  grid-template-columns: 1 / -1;
+
+.checkbox-label {
+  justify-self: end;
+  position: relative;
+  cursor: pointer;
 }
+
+.chevron {
+  content: "";
+  position: relative;
+  background-color: #333;
+  height: 2.4rem;
+  width: 2.4rem;
+  clip-path: polygon(50% 65%, 80% 35%, 100% 35%, 50% 85%, 0 35%, 20% 35%);
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.tips-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.tips-checkbox:checked + .chevron {
+  clip-path: polygon(50% 35%, 80% 65%, 100% 65%, 50% 15%, 0 65%, 20% 65%);
+}
+
+/* Forecast tips */
 .forecast-tips-container {
   grid-column: 1 / -1;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  transition: all 0.4s;
 }
-.forecast-tips-list {
+
+.forecast-tips-inner {
+  margin-left: 2rem;
   gap: 1.2rem;
+  transition: all 0.4s;
 }
+
 .forecast-tip {
-  font-size: 1.4rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.forecast-leaf-icon {
+  align-self: center;
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+.forecast-tip-text {
+  font-weight: 400;
+  font-size: 1.8rem;
 }
 
 /* ==== Loader + Animation ==== */
