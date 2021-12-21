@@ -3,6 +3,7 @@ import * as helpers from "../helpers";
 
 export default class CurrentDay extends Day {
   constructor(
+    dateTime,
     low,
     high,
     precipitation,
@@ -12,27 +13,16 @@ export default class CurrentDay extends Day {
     aqi,
     currentTemp,
     feelsLike,
-    currentLocation
+    currentLocation,
+    weatherId,
+    weatherMain
   ) {
-    super(utcNum, low, high, precipitation, sunrise, sunset, description);
+    super(dateTime, low, high, precipitation, sunrise, sunset, description);
     this.aqi = aqi;
     this.currentTemp = currentTemp;
     this.feelsLike = feelsLike;
     this.currentLocation = currentLocation;
+    this.weatherId = weatherId;
+    this.weatherMain = weatherMain;
   }
 }
-
-// const options = {
-//   weekday: 'long',
-//   year: 'numeric',
-//   month: 'long',
-//   day: 'numeric',
-// };
-// const toLongDateTime = today => {
-//   const toCurrentTime = new Date(today * 1000).toTimeString().slice(0, 8);
-//   currentTime.innerHTML = `Local Time: ${toCurrentTime}`;
-//   currentDate.innerText = new Date(today * 1000).toLocaleDateString(
-//     undefined,
-//     options
-//   );
-// };
