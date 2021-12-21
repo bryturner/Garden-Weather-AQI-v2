@@ -50,6 +50,11 @@ body {
   display: flex;
 }
 
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -66,10 +71,6 @@ body {
   list-style: none;
 }
 
-.jus-center {
-  justify-self: center;
-}
-
 .collapsed {
   height: 0 !important;
   margin-top: 0 !important;
@@ -79,6 +80,10 @@ body {
 .hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+.hide {
+  display: none !important;
 }
 
 /* ==== General Styles ==== */
@@ -336,7 +341,7 @@ body {
 }
 
 /* ==== Forecast Day ==== */
-.forecast-container {
+.forecast-day-container {
   margin: 0 auto;
   margin-bottom: 0.4rem;
   border-radius: 12px;
@@ -353,20 +358,24 @@ body {
   border-right: 1px solid var(--color-primary);
 }
 
-.forecast-month {
+.forecast-day {
   font-size: 2.4rem;
   align-self: center;
 }
 
-.forecast-day {
+.forecast-day-num {
   align-self: center;
   font-size: 3rem;
 }
 
 .forecast-list {
-  display: grid;
-  grid-template-columns: 17fr 17fr 17fr 24fr 24fr;
-  padding-left: 1rem;
+  display: flex;
+  gap: 3rem;
+  padding-left: 2rem;
+}
+
+.forecast-list-item {
+  gap: 0.5rem;
 }
 
 .forecast-img-icon {
@@ -376,16 +385,31 @@ body {
 }
 
 .forecast-detail {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 400;
   flex: 1;
+  align-self: center;
+}
+.forecast-detail-high {
+  font-size: 2.8rem;
+  flex: 1;
+  font-weight: 400;
+}
+.forecast-detail-low {
+  font-size: 2rem;
+  font-weight: 400;
+  flex: 1;
+  align-self: center;
 }
 
 .forecast-icon-description-container {
-  justify-self: end;
-  gap: 2rem;
+  width: 100%;
+  justify-self: center;
+  justify-content: space-between;
 }
-
+.sm-forecast-icon {
+  flex: 1;
+}
 .sm-svg-icon {
   height: 7rem;
   width: 7rem;
@@ -397,6 +421,8 @@ body {
   font-weight: 400;
   align-self: center;
   font-size: 2rem;
+  text-align: center;
+  flex: 1;
 }
 
 .checkbox-label {
@@ -463,7 +489,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   z-index: 99;
   background-color: rgb(135, 223, 169);
