@@ -4,3 +4,4 @@ save.md
 .parcel-cache
 dist
 .DS_Store
+.prettierrc
