@@ -1,7 +1,6 @@
-import Day from './day';
-import * as helpers from '../helpers';
+import { Day } from './day';
 
-export default class CurrentDay extends Day {
+export class CurrentDay extends Day {
   constructor(
     dateTime,
     low,

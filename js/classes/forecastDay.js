@@ -1,7 +1,7 @@
-import Day from './day';
+import { Day } from './day';
 import * as helpers from '../helpers';
 
-export default class ForecastDay extends Day {
+export class ForecastDay extends Day {
   constructor(
     dateTime,
     low,

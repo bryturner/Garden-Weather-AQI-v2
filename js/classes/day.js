@@ -1,6 +1,4 @@
-import * as helpers from '../helpers';
-
-export default class Day {
+export class Day {
   constructor(
     dateTime,
     low,
