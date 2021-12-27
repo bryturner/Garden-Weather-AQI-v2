@@ -1,11 +1,15 @@
-import { ForecastDay } from './classes/forecastDay';
-import { CurrentDay } from './classes/currentDay';
-import { Day } from './classes/day';
-import * as currentView from './views/currentWeatherView';
-import * as forecastView from './views/forecastView';
+import { ForecastDay } from './js/classes/forecastDay';
+import { CurrentDay } from './js/classes/currentDay';
+import { Day } from './js/classes/day';
+import * as currentView from './js/views/currentWeatherView';
+import * as forecastView from './js/views/forecastView';
 
-require('dotenv').config();
-const api = process.env.API_KEY;
+// import 'dotenv';
+
+// dotenv.config();
+// require('dotenv').config();
+// const api = process.env.API_KEY;
+const api = 'bca38502a60e9869e3bb916116cb6752';
 
 const getPosition = function () {
   return new Promise(function (resolve, reject) {

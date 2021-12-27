@@ -1,7 +1,10 @@
 .env
 node_modules
 save.md
-.parcel-cache
-dist
+dist/*
+!dist/index.html
+.cache
+
 .DS_Store
 .prettierrc
+old

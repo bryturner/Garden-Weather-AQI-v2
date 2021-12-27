@@ -1,9 +1,3 @@
-:root {
-  --color-primary: #5cad5ce6;
-  --color-primary-light: #d6ebd6;
-  --color-light-gray: #777;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +14,7 @@ body {
   background-repeat: repeat;
   background-size: cover;
   background-position: top;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   overflow-x: hidden;
   color: #333;
   position: relative;
@@ -251,14 +245,14 @@ body {
 .current-tips-date {
   font-size: 2.6rem;
   text-align: center;
-  background-color: var(--color-primary-light);
+  background-color: #d6ebd6;
   padding: 0.6rem;
   border-radius: 12px;
   margin-bottom: 1rem;
 }
 
 .current-tips-list {
-  background-color: var(--color-primary-light);
+  background-color: #d6ebd6;
   padding: 2rem;
   border-radius: 12px;
   gap: 2rem;
@@ -267,7 +261,7 @@ body {
 .current-leaf-icon {
   align-self: center;
   font-size: 2.4rem;
-  color: var(--color-primary);
+  color: #5cad5ce6;
 }
 
 .current-tip {
@@ -319,7 +313,7 @@ body {
 
 .slider::before {
   position: absolute;
-  content: "";
+  content: '';
   height: 1.5rem;
   width: 1.5rem;
   left: 0.25rem;
@@ -355,7 +349,7 @@ body {
 }
 
 .forecast-date {
-  border-right: 1px solid var(--color-primary);
+  border-right: 1px solid #5cad5ce6;
 }
 
 .forecast-day {
@@ -432,7 +426,7 @@ body {
 }
 
 .chevron {
-  content: "";
+  content: '';
   position: relative;
   background-color: #333;
   height: 2.4rem;
@@ -473,7 +467,7 @@ body {
 .forecast-leaf-icon {
   align-self: center;
   font-size: 2rem;
-  color: var(--color-primary);
+  color: #5cad5ce6;
 }
 
 .forecast-tip-text {
