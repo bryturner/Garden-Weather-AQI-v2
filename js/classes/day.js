@@ -1,3 +1,5 @@
+import * as helpers from '../helpers.js';
+
 export class Day {
   constructor(
     dateTime,
@@ -21,16 +23,12 @@ export class Day {
     this.weatherMain = weatherMain;
   }
 
-  _formatTemp = temp => {
-    return Math.trunc(temp);
-  };
-
   getLowTemp() {
-    return this._formatTemp(this.low);
+    return helpers.formatTemp(this.low);
   }
 
   getHighTemp() {
-    return this._formatTemp(this.high);
+    return helpers.formatTemp(this.high);
   }
 
   getPrecipitation() {
@@ -51,16 +49,33 @@ export class Day {
     return this._convertToTime(this.sunset);
   }
 
-  _formatDescription(description) {
-    const firstLettersUpper = description
-      .toLowerCase()
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-    return firstLettersUpper;
-  }
+  // _formatDescription(description) {
+  //   const firstLettersUpper = description
+  //     .toLowerCase()
+  //     .split(' ')
+  //     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  //     .join(' ');
+  //   return firstLettersUpper;
+  // }
 
-  getDescription() {
+  // getDescription() {
+  //   // Special cases from API are handled by hard-coding.
+  //   if (this.weatherMain === 'Thunderstorm') return 'Thunderstorm';
+
+  //   if (this.weatherMain === 'Drizzle') return 'Drizzle';
+
+  //   if (this.weatherId > 519 && this.weatherId < 531) return 'Shower Rain';
+
+  //   if (this.weatherMain === 'Clouds') {
+  //     //Remove the colon from all cloud descriptions
+  //     const cloudDescriptSplit = this.description.split(':');
+  //     return this._formatDescription(cloudDescriptSplit[0]);
+  //   }
+
+  //   return this._formatDescription(this.description);
+  // }
+
+  _setDescription() {
     // Special cases from API are handled by hard-coding.
     if (this.weatherMain === 'Thunderstorm') return 'Thunderstorm';
 
@@ -71,10 +86,21 @@ export class Day {
     if (this.weatherMain === 'Clouds') {
       //Remove the colon from all cloud descriptions
       const cloudDescriptSplit = this.description.split(':');
-      return this._formatDescription(cloudDescriptSplit[0]);
+
+      //To leave off percentages in the description
+      return cloudDescriptSplit[0];
     }
 
-    return this._formatDescription(this.description);
+    return this.description;
+  }
+
+  upperCaseDescription() {
+    const firstLettersUpper = this._setDescription()
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+    return firstLettersUpper;
   }
 
   getWeatherIcon() {

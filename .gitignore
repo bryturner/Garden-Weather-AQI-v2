@@ -1,10 +1,5 @@
-.env
 node_modules
 save.md
-dist/*
-!dist/index.html
-.cache
-
 .DS_Store
 .prettierrc
-old
+config.js

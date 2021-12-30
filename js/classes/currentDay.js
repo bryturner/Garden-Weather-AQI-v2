@@ -1,4 +1,5 @@
-import { Day } from './day';
+import { Day } from './day.js';
+import * as helpers from '../helpers.js';
 
 export class CurrentDay extends Day {
   constructor(
@@ -38,36 +39,21 @@ export class CurrentDay extends Day {
   }
 
   getAqi() {
-    const pm25Arr = this.aqiArr.map(aqi => aqi.components.pm2_5);
-    const sumPm25 = pm25Arr.reduce((acc, cur) => acc + cur);
+    const pm25Arr = helpers.getPm25Arr(this.aqiArr);
+
+    const sumPm25 = helpers.sumPm25Nums(pm25Arr);
+
+    // Return the average aqi
     const pm25 = Math.trunc(sumPm25 / pm25Arr.length);
-    return this._convertAqi(pm25);
-  }
-
-  _convertAqi(pm25) {
-    // The component pm2_5 from the api needs to be converted to the standard air quality index number. The conversion changes based on the pm2_5 number.
-    if (pm25 < 12) return Math.round(pm25 * 4.16);
-
-    if (pm25 >= 12 && pm25 < 35.4) return Math.round(2.13 * (pm25 - 12.1) + 51);
-
-    if (pm25 >= 35.5 && pm25 < 55.4)
-      return Math.round(2.45 * (pm25 - 35.5) + 101);
-
-    if (pm25 >= 55.5 && pm25 < 150.4)
-      return Math.round(0.52 * (pm25 - 55.5) + 151);
-
-    if (pm25 >= 150.5 && pm25 < 250.4)
-      return Math.round(0.99 * (pm25 - 150.5) + 201);
-
-    if (pm25 > 250.5) return Math.round(0.99 * (pm25 - 250.5) + 301);
+    return helpers.convertAqi(pm25);
   }
 
   getCurrentTemp() {
-    return this._formatTemp(this.currentTemp);
+    return helpers.formatTemp(this.currentTemp);
   }
 
   getFeelsLike() {
-    return this._formatTemp(this.feelsLike);
+    return helpers.formatTemp(this.feelsLike);
   }
 
   getCurrentLocation() {

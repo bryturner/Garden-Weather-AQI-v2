@@ -1,11 +1,20 @@
-import { ForecastDay } from './classes/forecastDay';
-import { CurrentDay } from './classes/currentDay';
-import { Day } from './classes/day';
-import * as currentView from './views/currentWeatherView';
-import * as forecastView from './views/forecastView';
+import { CurrentDay } from './classes/currentDay.js';
+import { CurrentTips } from './classes/currentTips.js';
+import { ForecastDay } from './classes/forecastDay.js';
+import {
+  displayCurrentTips,
+  displayCurrentWeather,
+} from './views/currentWeatherView.js';
+import { displayForecastDay } from './views/forecastView.js';
+import {
+  API_KEY_WEA,
+  URL_WEATHER,
+  URL_AQI,
+  URL_LOCATION,
+  API_KEY_LOC,
+} from './config.js';
 
-require('dotenv').config();
-const api = process.env.API_KEY;
+import { toggleDegrees } from './helpers.js';
 
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
@@ -26,30 +35,29 @@ const getAllApiData = async function () {
     const data = await Promise.all([
       // Weather info
       getApiData(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,alerts&appid=${api}&units=imperial`
+        `${URL_WEATHER}?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,alerts&appid=${API_KEY_WEA}&units=imperial`
       ),
 
       //Air quality info
       getApiData(
-        `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitude}&lon=${longitude}&appid=${api}`
+        `${URL_AQI}?lat=${latitude}&lon=${longitude}&appid=${API_KEY_WEA}`
       ),
 
       //Location Info
-      getApiData(`https://geocode.xyz/${latitude},${longitude}?geoit=json`),
+      getApiData(`${URL_LOCATION}?apikey=${API_KEY_LOC}`),
     ]);
 
     setCurrentDay(data);
 
-    //Only need data from one object in the array
-    //sortForecastData(data[0]);
+    setCurrentTips(data[0], data[1]);
 
     setForecastDay(data[0]);
+
+    toggleDegrees();
   } catch (err) {
     console.error(err);
   }
 };
-
-getAllApiData();
 
 const setCurrentDay = function (data) {
   // Weather information
@@ -66,11 +74,13 @@ const setCurrentDay = function (data) {
 
   // Array of air quality data for the next 6 hours to be used for current weather info
   const aqiArr = data[1].list.slice(0, 6);
+  // const aqiArr = 0;
 
   // Location information
-  const { city, state, prov } = data[2];
-  const currentLocation = Array.from([city, state, prov]);
+  const { city, region_code, country_code } = data[2];
+  const currentLocation = Array.from([city, region_code, country_code]);
 
+  // New current day object
   const currentWeather = new CurrentDay(
     dateTime,
     low,
@@ -86,17 +96,39 @@ const setCurrentDay = function (data) {
     feelsLike,
     currentLocation
   );
-  console.log(currentWeather);
 
   // Display current weather object
-  // console.log(currentWeather.getWeatherIcon());
-  currentView.displayCurrentWeather(currentWeather);
+  displayCurrentWeather(currentWeather);
 };
 
-// Get all forecast data other than the current day at index 0
+const setCurrentTips = function (data_0, data_1) {
+  const dateTime = data_0.current.dt;
+  const dailyWeatherArr = data_0.daily;
+  const morningTemp = data_0.daily[0].temp.morn;
+  const eveningTemp = data_0.daily[0].temp.eve;
+  const dayTemp = data_0.daily[0].temp.day;
+  const aqiArr = data_1.list.slice(0, 6);
+
+  const currentTips = new CurrentTips(
+    dateTime,
+    dailyWeatherArr,
+    morningTemp,
+    eveningTemp,
+    dayTemp,
+    aqiArr
+  );
+
+  displayCurrentTips(currentTips);
+};
+
+// Get all forecast data for the coming week
 const filterForecastData = function (data) {
-  const dailyForecastArr = data.daily.slice(1, data.daily.length);
-  const forecastDayArr = dailyForecastArr.map(day => {
+  // Exclude daily index 0 - it is the current day
+  return data.daily.slice(1, data.daily.length);
+};
+
+const createForecastObject = function (dailyForecastArr) {
+  const forecastObjArr = dailyForecastArr.map(day => {
     const dateTime = day.dt;
     const low = day.temp.min;
     const high = day.temp.max;
@@ -109,6 +141,7 @@ const filterForecastData = function (data) {
     const eveningTemp = day.temp.eve;
     const dayTemp = day.temp.day;
 
+    // New forecast day object
     const forecastWeatherDay = new ForecastDay(
       dateTime,
       low,
@@ -125,11 +158,18 @@ const filterForecastData = function (data) {
     );
     return forecastWeatherDay;
   });
-  return forecastDayArr;
+  return forecastObjArr;
 };
 
 const setForecastDay = function (data) {
-  const forecastDayArr = filterForecastData(data);
+  const dailyForecastArr = filterForecastData(data);
 
-  forecastDayArr.map(day => forecastView.displayForecastDay(day));
+  const forecastDayArr = createForecastObject(dailyForecastArr);
+
+  // Display each forecast day
+  forecastDayArr.map(day => {
+    displayForecastDay(day);
+  });
 };
+
+getAllApiData();
