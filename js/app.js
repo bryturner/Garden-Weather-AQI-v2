@@ -15,6 +15,7 @@ import {
 } from './config.js';
 
 import { toggleDegrees } from './helpers.js';
+import { toggleLoader } from './views/loaderView.js';
 
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
@@ -29,6 +30,7 @@ const getApiData = async function (url, errorMsg = 'Something went wrong') {
 };
 
 const getAllApiData = async function () {
+  toggleLoader();
   try {
     const pos = await getPosition();
     const { latitude, longitude } = pos.coords;
@@ -57,6 +59,7 @@ const getAllApiData = async function () {
   } catch (err) {
     console.error(err);
   }
+  toggleLoader();
 };
 
 const setCurrentDay = function (data) {

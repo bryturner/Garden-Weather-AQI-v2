@@ -613,16 +613,19 @@ body {
   }
 }
 
+/* Hide elements */
 .collapsed {
   height: 0;
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
-  /* opacity: 0 ;
-  visibility: hidden ; */
 }
 
 .hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+.hide-load {
+  display: none;
 }
