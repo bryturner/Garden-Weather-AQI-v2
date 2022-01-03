@@ -1,5 +1,5 @@
-import { Day } from './day';
-import * as helpers from '../helpers';
+import { Day } from './day.js';
+import * as helpers from '../helpers.js';
 
 export class ForecastDay extends Day {
   constructor(
@@ -44,13 +44,23 @@ export class ForecastDay extends Day {
     });
   }
 
+  getForecastWeekdayTips() {
+    return new Date(this.dateTime * 1000).toLocaleDateString(undefined, {
+      weekday: 'long',
+    });
+  }
+
+  lowerCaseDescription() {
+    return this._setDescription().toLowerCase();
+  }
+
   getMorningTemp() {
-    return this._formatTemp(this.morningTemp);
+    return helpers.formatTemp(this.morningTemp);
   }
   getEveningTemp() {
-    return this._formatTemp(this.eveningTemp);
+    return helpers.formatTemp(this.eveningTemp);
   }
   getDayTemp() {
-    return this._formatTemp(this.dayTemp);
+    return helpers.formatTemp(this.dayTemp);
   }
 }

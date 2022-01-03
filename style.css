@@ -1,7 +1,6 @@
 :root {
   --color-primary: #5cad5ce6;
   --color-primary-light: #d6ebd6;
-  --color-light-gray: #777;
 }
 
 * {
@@ -20,7 +19,7 @@ body {
   background-repeat: repeat;
   background-size: cover;
   background-position: top;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   overflow-x: hidden;
   color: #333;
   position: relative;
@@ -34,7 +33,7 @@ body {
 }
 
 .weather-container {
-  background-color: #5cad5ce6;
+  background-color: var(--color-primary);
   padding: 2rem;
   border-radius: 12px;
   position: relative;
@@ -71,26 +70,12 @@ body {
   list-style: none;
 }
 
-.collapsed {
-  height: 0 !important;
-  margin-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.hide {
-  display: none !important;
-}
-
 /* ==== General Styles ==== */
 .deg-style {
   font-size: 60%;
   vertical-align: top;
 }
+
 .deg-style-small {
   font-size: 75%;
   vertical-align: top;
@@ -107,7 +92,6 @@ body {
 }
 
 /* ==== Current Weather Information ==== */
-
 .ph-info {
   position: absolute;
   top: 2%;
@@ -126,7 +110,7 @@ body {
   left: 4.5%;
   border-radius: 11px;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.4);
-  background-color: #d6ebd6;
+  background-color: var(--color-primary-light);
   display: none;
 }
 
@@ -144,6 +128,7 @@ body {
   padding: 3rem;
   margin-left: 2.4rem;
 }
+
 .page-info {
   font-size: 1.6rem;
 }
@@ -160,7 +145,7 @@ body {
   margin-bottom: 1.6rem;
   border-radius: 12px;
   padding: 2rem;
-  background-color: #d6ebd6;
+  background-color: var(--color-primary-light);
   display: grid;
   grid-template-columns: 26fr 38fr 38fr;
   column-gap: 5rem;
@@ -242,7 +227,7 @@ body {
 
 /* Current tips aside */
 .current-tips-container {
-  background-color: #5cad5ce6;
+  background-color: var(--color-primary);
   padding: 2rem;
   border-radius: 12px;
   position: relative;
@@ -319,7 +304,7 @@ body {
 
 .slider::before {
   position: absolute;
-  content: "";
+  content: '';
   height: 1.5rem;
   width: 1.5rem;
   left: 0.25rem;
@@ -346,7 +331,7 @@ body {
   margin-bottom: 0.4rem;
   border-radius: 12px;
   padding: 1rem 3rem 1rem 1rem;
-  background-color: #d6ebd6;
+  background-color: var(--color-primary-light);
   display: grid;
   grid-template-columns: 8fr 59fr 26fr 7fr;
   align-items: center;
@@ -369,9 +354,10 @@ body {
 }
 
 .forecast-list {
-  display: flex;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   padding-left: 2rem;
+  margin-right: 4rem;
 }
 
 .forecast-list-item {
@@ -390,16 +376,17 @@ body {
   flex: 1;
   align-self: center;
 }
+
 .forecast-detail-high {
+  display: inline;
   font-size: 2.8rem;
-  flex: 1;
   font-weight: 400;
 }
+
 .forecast-detail-low {
+  display: inline-flex;
   font-size: 2rem;
   font-weight: 400;
-  flex: 1;
-  align-self: center;
 }
 
 .forecast-icon-description-container {
@@ -407,9 +394,11 @@ body {
   justify-self: center;
   justify-content: space-between;
 }
+
 .sm-forecast-icon {
   flex: 1;
 }
+
 .sm-svg-icon {
   height: 7rem;
   width: 7rem;
@@ -432,7 +421,7 @@ body {
 }
 
 .chevron {
-  content: "";
+  content: '';
   position: relative;
   background-color: #333;
   height: 2.4rem;
@@ -454,15 +443,17 @@ body {
 /* Forecast tips */
 .forecast-tips-container {
   grid-column: 1 / -1;
-  margin-top: 2rem;
-  padding-bottom: 1rem;
+  margin-top: -2.4rem;
   transition: all 0.4s;
+  margin-bottom: 0.4rem;
+  border-radius: 12px;
+  padding: 2.8rem 3rem 2rem 1rem;
+  background-color: var(--color-primary-light);
 }
 
 .forecast-tips-inner {
   margin-left: 2rem;
   gap: 1.2rem;
-  transition: all 0.4s;
 }
 
 .forecast-tip {
@@ -492,7 +483,7 @@ body {
   height: 100vh;
   width: 100%;
   z-index: 99;
-  background-color: rgb(135, 223, 169);
+  background-color: var(--color-primary-light);
 }
 
 .loader-inner {
@@ -620,4 +611,21 @@ body {
   100% {
     background-color: #ffdc4e;
   }
+}
+
+/* Hide elements */
+.collapsed {
+  height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hide-load {
+  display: none;
 }
