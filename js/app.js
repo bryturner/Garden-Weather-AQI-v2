@@ -46,7 +46,7 @@ const getAllApiData = async function () {
       ),
 
       //Location Info
-      getApiData(`${URL_LOCATION}?apikey=${API_KEY_LOC}`),
+      getApiData(`${URL_LOCATION}token=${API_KEY_LOC}`),
     ]);
 
     setCurrentDay(data);
@@ -80,8 +80,8 @@ const setCurrentDay = function (data) {
   // const aqiArr = 0;
 
   // Location information
-  const { city, region_code, country_code } = data[2];
-  const currentLocation = Array.from([city, region_code, country_code]);
+  const { city, region, country } = data[2];
+  const currentLocation = Array.from([city, region, country]);
 
   // New current day object
   const currentWeather = new CurrentDay(
