@@ -1,7 +1,6 @@
 # Garden-Weather-AQI-v2
 
 <strong>What it does:</strong>
-
 This app connects to the OpenWeather API to get current and forecasted weather and air quality information. It displays this information to the user and uses it to give recommendations and tips relating to gardening.
 
 
