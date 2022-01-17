@@ -75,8 +75,15 @@ export const toggleTipsDropdown = function () {
 
   forecastCheckboxes.forEach((checkbox, i) => {
     checkbox.addEventListener('change', function () {
-      forecastTipContainers[i].classList.toggle('collapsed');
-      forecastTipsInner[i].classList.toggle('hidden');
+      if (checkbox.checked) {
+        forecastTipContainers[i].classList.remove('collapsed');
+        forecastTipsInner[i].classList.remove('hidden');
+      }
+
+      if (!checkbox.checked) {
+        forecastTipContainers[i].classList.add('collapsed');
+        forecastTipsInner[i].classList.add('hidden');
+      }
     });
   });
 };

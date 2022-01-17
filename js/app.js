@@ -175,4 +175,4 @@ const setForecastDay = function (data) {
   });
 };
 
-getAllApiData();
+// getAllApiData();

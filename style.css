@@ -433,6 +433,7 @@ body {
 
 .tips-checkbox {
   position: absolute;
+  cursor: pointer;
   opacity: 0;
 }
 
