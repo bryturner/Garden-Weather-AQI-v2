@@ -26,11 +26,12 @@ export const setCurrentWeather = async function () {
     dailyWeatherArray: weatherData.daily,
     morningTemp: weatherData.daily[0].temp.morn,
     eveningTemp: weatherData.daily[0].temp.eve,
-    dayTimeTemp: weatherData.daily[0].temp.day,
+    daytimeTemp: weatherData.daily[0].temp.day,
     aqiNumbersArray: aqiData.list,
     city: locationData.city,
     region: locationData.region,
     country: locationData.country,
+    currentLocation: locationData,
   };
   //   console.log(weatherObj);
   return weatherObj;
@@ -57,11 +58,11 @@ export const setForecastWeather = async function () {
       sunsetTime: forecastData.sunset,
       morningTemp: forecastData.temp.morn,
       eveningTemp: forecastData.temp.eve,
-      dayTimeTemp: forecastData.temp.day,
+      daytimeTemp: forecastData.temp.day,
     };
   });
 
-  //   console.log(forecastObjectArray);
+  console.log(forecastObjectArray);
   return forecastObjectArray;
 };
 

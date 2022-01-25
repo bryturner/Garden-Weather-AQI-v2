@@ -4,6 +4,7 @@ class CurrentWeather {
   constructor(currentWeatherData) {
     this.currentWeatherData = currentWeatherData;
 
+    this.formatCurrentLocation();
     this.formatCurrentTime();
     this.formatCurrentDate();
     this.formatLowTemp();
@@ -11,7 +12,7 @@ class CurrentWeather {
     this.formatCurrentTemp();
     this.formatFeelsLikeTemp();
     this.formatMorningTemp();
-    this.formatDayTimeTemp();
+    this.formatDaytimeTemp();
     this.formatEveningTemp();
     this.formatPrecip();
     this.formatSunrise();
@@ -22,6 +23,10 @@ class CurrentWeather {
     this.getFuturePrecipPercentage();
     this.setAqiCondition();
     this.setAqiRecommendation();
+  }
+
+  formatCurrentLocation() {
+    this.currentLocation = `${this.currentWeatherData.city}, ${this.currentWeatherData.region}, ${this.currentWeatherData.country}`;
   }
 
   formatCurrentTime() {
@@ -62,8 +67,8 @@ class CurrentWeather {
     this.morningTemp = helper.formatTemp(this.currentWeatherData.morningTemp);
   }
 
-  formatDayTimeTemp() {
-    this.dayTimeTemp = helper.formatTemp(this.currentWeatherData.dayTimeTemp);
+  formatDaytimeTemp() {
+    this.daytimeTemp = helper.formatTemp(this.currentWeatherData.daytimeTemp);
   }
 
   formatEveningTemp() {
@@ -89,15 +94,13 @@ class CurrentWeather {
   }
 
   formatWeatherDescription() {
-    const unformatedWeatherDescription = helper.getWeatherDescription(
+    const unformattedDescription = helper.getWeatherDescription(
       this.currentWeatherData.weatherMain,
       this.currentWeatherData.weatherId,
       this.currentWeatherData.weatherDescription
     );
 
-    this.weatherDescription = helper.formatToUpperCase(
-      unformatedWeatherDescription
-    );
+    this.weatherDescription = helper.formatToUpperCase(unformattedDescription);
   }
 
   setWeatherIcon() {

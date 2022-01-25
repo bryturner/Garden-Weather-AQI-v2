@@ -10,12 +10,14 @@ class ForecastWeather {
     this.formatLowTemp();
     this.formatHighTemp();
     this.formatMorningTemp();
-    this.formatDayTimeTemp();
+    this.formatDaytimeTemp();
     this.formatEveningTemp();
     this.formatPrecip();
     this.formatSunrise();
     this.formatSunset();
-    this.formatWeatherDescription();
+    this.formatWeatherDescriptionUpperCase();
+    this.formatWeatherDescriptionLowerCase();
+    this.setWeatherIcon();
   }
 
   formatDayOfWeekShort() {
@@ -54,8 +56,8 @@ class ForecastWeather {
     this.morningTemp = helper.formatTemp(this.forecastWeatherData.morningTemp);
   }
 
-  formatDayTimeTemp() {
-    this.dayTimeTemp = helper.formatTemp(this.forecastWeatherData.dayTimeTemp);
+  formatDaytimeTemp() {
+    this.daytimeTemp = helper.formatTemp(this.forecastWeatherData.daytimeTemp);
   }
 
   formatEveningTemp() {
@@ -80,14 +82,36 @@ class ForecastWeather {
     );
   }
 
-  formatWeatherDescription() {
-    const unformatedWeatherDescription = helper.getWeatherDescription(
+  formatWeatherDescriptionUpperCase() {
+    const unformattedDescription = helper.getWeatherDescription(
       this.forecastWeatherData.weatherMain,
       this.forecastWeatherData.weatherId,
       this.forecastWeatherData.weatherDescription
     );
 
-    this.weatherDescription = unformatedWeatherDescription.toLowerCase();
+    this.weatherDescriptionUpperCase = helper.formatToUpperCase(
+      unformattedDescription
+    );
+  }
+
+  formatWeatherDescriptionLowerCase() {
+    const unformattedDescription = helper.getWeatherDescription(
+      this.forecastWeatherData.weatherMain,
+      this.forecastWeatherData.weatherId,
+      this.forecastWeatherData.weatherDescription
+    );
+
+    this.weatherDescriptionLowerCase = unformattedDescription.toLowerCase();
+  }
+
+  setWeatherIcon() {
+    this.weatherIcon = helper.getWeatherIcon(
+      this.forecastWeatherData.dateTime,
+      this.forecastWeatherData.sunriseTime,
+      this.forecastWeatherData.sunsetTime,
+      this.forecastWeatherData.weatherId,
+      this.forecastWeatherData.weatherMain
+    );
   }
 }
 

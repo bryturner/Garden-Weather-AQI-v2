@@ -1,4 +1,7 @@
 import * as model from './models/model.js';
+import * as currentDayView from './views/currentWeatherView.js';
+import * as forecastDayView from './views/forecastView.js';
+import { toggleLoader } from './views/loaderView.js';
 import CurrentWeather from './models/currentDayClass.js';
 import ForecastWeather from './models/forecastDayClass.js';
 
@@ -6,17 +9,23 @@ const controlCurrentWeather = async function () {
   const currentWeatherData = await model.setCurrentWeather();
 
   const currentDay = new CurrentWeather(currentWeatherData);
-  //   console.log(currentDay);
+
+  currentDayView.displayCurrentWeather(currentDay);
+
+  currentDayView.displayCurrentTips(currentDay);
 };
 
 const controlForecastWeather = async function () {
   const forecastWeatherDataArray = await model.setForecastWeather();
 
-  const forecastDay = forecastWeatherDataArray.map(weatherData => {
+  const forecastDayArray = forecastWeatherDataArray.map(weatherData => {
     const forecastWeather = new ForecastWeather(weatherData);
     return forecastWeather;
   });
-  console.log(forecastDay);
+
+  forecastDayArray.map(forecastDay =>
+    forecastDayView.displayForecastDay(forecastDay)
+  );
 };
 
 // ========================================================
