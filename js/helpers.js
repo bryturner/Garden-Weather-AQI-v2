@@ -1,82 +1,75 @@
-export const convertAqi = function (pm25) {
-  // The component pm2_5 from the api needs to be converted to the standard air quality index number. The conversion changes based on the pm2_5 number.
-  if (pm25 < 0) return 'n/a';
-  if (pm25 < 12) return Math.round(pm25 * 4.16);
+// ===========================================
 
-  if (pm25 >= 12 && pm25 < 35.4) return Math.round(2.13 * (pm25 - 12.1) + 51);
-
-  if (pm25 >= 35.5 && pm25 < 55.4)
-    return Math.round(2.45 * (pm25 - 35.5) + 101);
-
-  if (pm25 >= 55.5 && pm25 < 150.4)
-    return Math.round(0.52 * (pm25 - 55.5) + 151);
-
-  if (pm25 >= 150.5 && pm25 < 250.4)
-    return Math.round(0.99 * (pm25 - 150.5) + 201);
-
-  if (pm25 > 250.5) return Math.round(0.99 * (pm25 - 250.5) + 301);
-};
-
-export const sumPm25Nums = function (pm25Arr) {
-  return pm25Arr.reduce((acc, cur) => acc + cur);
-};
-
-export const getPm25Arr = function (aqiArr) {
-  return aqiArr.map(aqi => aqi.components.pm2_5);
-};
-
-export const checkAqiNullish = function (aqiArr) {
-  return (aqiArr ??= 'n/a');
-};
-
-export const formatTemp = temp => Math.trunc(temp);
-
-export const parseToHtml = function (string) {
+export const parseToHtml = string => {
   const parser = new DOMParser();
   return parser.parseFromString(string, 'text/html');
 };
 
-export const toggleDegrees = function () {
-  const degreeChangeCheck = document.querySelector('.deg-checkbox');
-  const degreeSelect = document.querySelectorAll('.deg-select');
-  const temperatureSelect = document.querySelectorAll('.temp-select');
+export const formatTemp = temp => Math.trunc(temp);
 
-  degreeChangeCheck.addEventListener('change', function () {
-    if (degreeChangeCheck.checked) {
-      temperatureSelect.forEach(temp => {
-        temp.innerText = Math.round((+temp.innerText - 32) / 1.8);
-      });
-      degreeSelect.forEach(
-        deg => (deg.innerText = `${String.fromCharCode(0x00b0)}C`)
-      );
-    } else {
-      temperatureSelect.forEach(temp => {
-        temp.innerText = Math.round((+temp.innerText * 9) / 5 + 32);
-      });
-      degreeSelect.forEach(
-        deg => (deg.innerText = `${String.fromCharCode(0x00b0)}F`)
-      );
-    }
-  });
+export const convertToHrsAndMins = time => {
+  return new Date(time * 1000)
+    .toLocaleTimeString([], { hour12: false })
+    .slice(0, 5);
 };
 
-export const toggleTipsDropdown = function () {
-  const forecastCheckboxes = Array.from(
-    document.querySelectorAll('.tips-checkbox')
-  );
+export const getWeatherDescription = function (
+  weatherMain,
+  weatherId,
+  weatherDescription
+) {
+  // Special cases from API are handled by hard-coding.
+  if (weatherMain === 'Thunderstorm') return 'Thunderstorm';
 
-  const forecastTipContainers = Array.from(
-    document.querySelectorAll('.forecast-tips-container')
-  );
+  if (weatherMain === 'Drizzle') return 'Drizzle';
 
-  const forecastTipsInner = Array.from(
-    document.querySelectorAll('.forecast-tips-inner')
-  );
+  if (weatherId > 519 && weatherId < 531) return 'Shower Rain';
 
-  forecastCheckboxes.forEach((checkbox, i) => {
-    checkbox.addEventListener('change', function () {
-      forecastTipContainers[i].classList.toggle('collapsed');
-      forecastTipsInner[i].classList.toggle('hidden');
-    });
-  });
+  if (weatherMain === 'Clouds') {
+    //Remove the colon from all cloud descriptions
+    const cloudDescriptSplit = weatherDescription.split(':');
+
+    //To leave off percentages in the description
+    return cloudDescriptSplit[0];
+  }
+
+  return weatherDescription;
+};
+
+export const formatToUpperCase = function (weatherDescription) {
+  const firstLettersToUpper = weatherDescription
+    .toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  return firstLettersToUpper;
+};
+
+export const getWeatherIcon = function (
+  dateTime,
+  sunriseTime,
+  sunsetTime,
+  weatherId,
+  weatherMain
+) {
+  // Use the OpenWeather API descriptions (this.weatherMain) and ids (this.weatherId) to determine which weather icon should be displayed. **The strings being returned are the file names of the icon svg
+
+  // Check to see if it is dark in the current location in order to display night icons
+  if (dateTime < sunriseTime || dateTime > sunsetTime) {
+    if (weatherId === 500) return 'night-light-rain';
+    if (weatherId === 800) return 'night-clear';
+    if (weatherId === 801 || weatherId === 802) return 'night-partly-cloudy';
+  }
+
+  // Display icons for other unique weather occurances
+  if (weatherId === 500) return 'light-rain';
+
+  if (weatherId === 801 || weatherId === 802) return 'partly-cloudy';
+
+  if (weatherMain === 'Dust' || weatherMain === 'Sand') return 'sand-dust';
+
+  if (weatherMain === 'Smoke' || weatherMain === 'Fog') return 'fog-smoke';
+  // All other svg icon file names and Openweather API weather condition titles match and can be used to display the correct icon
+
+  return weatherMain;
 };

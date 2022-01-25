@@ -1,6 +1,6 @@
 import { parseToHtml } from '../helpers.js';
 
-export const displayCurrentWeather = currentWeather => {
+export const displayCurrentWeather = currentDay => {
   const currentDayElementSelect = document.querySelector(
     '.current-day-element-select'
   );
@@ -9,8 +9,8 @@ export const displayCurrentWeather = currentWeather => {
 <div class="current-day-first-child">
  <div class="current-day-container">  
   <div class="flex-col mar-left-sm">
-    <div class="current-location">${currentWeather.getCurrentLocation()}</div>
-    <div class="current-time">As of ${currentWeather.getCurrentTime()}</div>
+    <div class="current-location">${currentDay.getCurrentLocation()}</div>
+    <div class="current-time">As of ${currentDay.getCurrentTime()}</div>
     <div class="slider-container-outer">
       <div class="slider-container">
         <div class="fahrenheit">&deg;F</div>
@@ -29,21 +29,21 @@ export const displayCurrentWeather = currentWeather => {
   <div class="icon-temp-container">
     <div id="lg-current-icon">
       <img
-        src="./img/${currentWeather.getWeatherIcon()}.svg"
-        alt="${currentWeather.getWeatherIcon()}-icon"
+        src="./img/${currentDay.getWeatherIcon()}.svg"
+        alt="${currentDay.getWeatherIcon()}-icon"
         class="lg-svg-icon"
         crossorigin
       />
     </div>
     <div class="current-temp">
-      <span class="temp-select" id="temp-current">${currentWeather.getCurrentTemp()}</span
+      <span class="temp-select" id="temp-current">${currentDay.getCurrentTemp()}</span
       ><span class="deg-style deg-select">&deg;F</span>
     </div>
     <div class="current-description-container">
-      <div class="current-description">${currentWeather.upperCaseDescription()}</div>
+      <div class="current-description">${currentDay.upperCaseDescription()}</div>
       <div class="feels-like">
         Feels Like
-        <span class="temp-select" id="temp-feels">${currentWeather.getFeelsLike()}</span
+        <span class="temp-select" id="temp-feels">${currentDay.getFeelsLike()}</span
         ><span class="deg-style-small deg-select">&deg;F</span>
       </div>
     </div>
@@ -53,34 +53,34 @@ export const displayCurrentWeather = currentWeather => {
     <ul class="current-details-list no-bullets">
       <li class="current-details-list-item">
         <div class="current-detail-title">Sunrise</div>
-        <div class="current-detail" id="current-sunrise">${currentWeather.getSunrise()} </div>
+        <div class="current-detail" id="current-sunrise">${currentDay.getSunrise()} </div>
       </li>
   
       <li class="current-details-list-item">
         <div class="current-detail-title">Sunset</div>
-        <div class="current-detail" id="current-sunset">${currentWeather.getSunset()} </div>
+        <div class="current-detail" id="current-sunset">${currentDay.getSunset()} </div>
       </li>
       <li class="current-details-list-item">
         <div class="current-detail-title">Precip.</div>
-        <div class="current-detail" id="current-rain">${currentWeather.getPrecipitation()}%</div>
+        <div class="current-detail" id="current-rain">${currentDay.getPrecipitation()}%</div>
       </li>
       <li class="current-details-list-item">
         <div class="current-detail-title">Low</div>
         <div class="current-detail">
-          <span class="temp-select" id="current-low">${currentWeather.getLowTemp()}</span
+          <span class="temp-select" id="current-low">${currentDay.getLowTemp()}</span
           ><span class="deg-style deg-select">&deg;F</span>
         </div>
       </li>
       <li class="current-details-list-item">
         <div class="current-detail-title">High</div>
         <div class="current-detail">
-          <span class="temp-select" id="current-high">${currentWeather.getHighTemp()} </span
+          <span class="temp-select" id="current-high">${currentDay.getHighTemp()} </span
           ><span class="deg-style deg-select">&deg;F</span>
         </div>
       </li>
       <li class="current-details-list-item">
         <div class="current-detail-title">AQI</div>
-        <div class="current-detail aqi-num" id="current-AQI">${currentWeather.getAqi()} </div>
+        <div class="current-detail aqi-num" id="current-AQI">${currentDay.getAqi()} </div>
       </li>
     </ul>
   </div>
