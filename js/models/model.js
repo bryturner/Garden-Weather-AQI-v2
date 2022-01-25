@@ -62,7 +62,7 @@ export const setForecastWeather = async function () {
     };
   });
 
-  console.log(forecastObjectArray);
+  //   console.log(forecastObjectArray);
   return forecastObjectArray;
 };
 

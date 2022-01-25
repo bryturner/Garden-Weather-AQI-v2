@@ -141,3 +141,28 @@ export const displayCurrentTips = currentDay => {
     htmlTipsDoc.body.firstElementChild
   );
 };
+
+export const addHandlerToggleDegrees = function (handler) {
+  const degreeChangeCheckbox = document.querySelector('.deg-checkbox');
+  //   const degreeAbbreviations = document.querySelectorAll('.deg-select');
+  //   const temperatureNumbers = document.querySelectorAll('.temp-select');
+
+  degreeChangeCheckbox.addEventListener('change', function () {
+    //  if (degreeChangeCheckbox.checked) {
+    //    temperatureNumbers.forEach(temp => {
+    //      temp.innerText = Math.round((+temp.innerText - 32) / 1.8);
+    //    });
+    //    degreeAbbreviations.forEach(
+    //      deg => (deg.innerText = `${String.fromCharCode(0x00b0)}C`)
+    //    );
+    //  } else {
+    //    temperatureNumbers.forEach(temp => {
+    //      temp.innerText = Math.round((+temp.innerText * 9) / 5 + 32);
+    //    });
+    //    degreeAbbreviations.forEach(
+    //      deg => (deg.innerText = `${String.fromCharCode(0x00b0)}F`)
+    //    );
+    //  }
+    handler();
+  });
+};

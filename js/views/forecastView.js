@@ -92,25 +92,27 @@ export const displayForecastDay = forecastDay => {
     'beforebegin',
     htmlForecastDoc.body.firstChild
   );
+};
 
-  //   toggleTipsDropdown();
-  // Select all the checkboxes and elements to be manipulated after above markup is inserted.
-  // const forecastCheckboxes = Array.from(
-  //   document.querySelectorAll('.tips-checkbox')
-  // );
+export const addHandlerForecastDropdown = handler => {
+  //   Select all the checkboxes and elements to be manipulated after above markup is inserted.
+  const forecastCheckboxes = Array.from(
+    document.querySelectorAll('.tips-checkbox')
+  );
 
-  // const forecastTipContainers = Array.from(
-  //   document.querySelectorAll('.forecast-tips-container')
-  // );
+  //   const forecastTipContainers = Array.from(
+  //     document.querySelectorAll('.forecast-tips-container')
+  //   );
 
-  // const forecastTipsInner = Array.from(
-  //   document.querySelectorAll('.forecast-tips-inner')
-  // );
+  //   const forecastTipsInner = Array.from(
+  //     document.querySelectorAll('.forecast-tips-inner')
+  //   );
 
-  // forecastCheckboxes.forEach((checkbox, i) => {
-  //   checkbox.addEventListener('change', function () {
-  //     forecastTipContainers[i].classList.toggle('collapsed');
-  //     forecastTipsInner[i].classList.toggle('hidden');
-  //   });
-  // });
+  forecastCheckboxes.forEach((checkbox, i) => {
+    checkbox.addEventListener('change', function () {
+      handler(i);
+      // forecastTipContainers[i].classList.toggle('collapsed');
+      // forecastTipsInner[i].classList.toggle('hidden');
+    });
+  });
 };
