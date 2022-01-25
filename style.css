@@ -16,9 +16,9 @@ html {
 body {
   background-image: url(./img/flowers.jpg);
   font-weight: 500;
-  background-repeat: repeat;
   background-size: cover;
-  background-position: top;
+  background-position: top left;
+  background-attachment: fixed;
   font-family: 'IBM Plex Sans', sans-serif;
   overflow-x: hidden;
   color: #333;
