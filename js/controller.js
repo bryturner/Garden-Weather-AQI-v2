@@ -2,6 +2,7 @@ import * as model from './models/model.js';
 import * as currentDayView from './views/currentWeatherView.js';
 import * as forecastDayView from './views/forecastView.js';
 import * as currentDayTipsView from './views/currentTipsView.js';
+import { displayError } from './views/errorView.js';
 import { toggleLoader } from './views/loaderView.js';
 import CurrentWeather from './models/currentDayModel.js';
 import ForecastWeather from './models/forecastDayModel.js';
@@ -9,28 +10,15 @@ import CurrentTips from './models/currentTipsModel.js';
 
 // Add timeout error handling on all control functions
 const controlCurrentWeather = async function () {
-  const currentWeatherData = await model.setCurrentWeather();
+  const currentWeatherData = await model.getCurrentWeatherData();
 
   const currentDay = new CurrentWeather(currentWeatherData);
 
   currentDayView.displayCurrentWeather(currentDay);
 };
 
-const controlForecastWeather = async function () {
-  const forecastWeatherDataArray = await model.setForecastWeather();
-
-  const forecastDayArray = forecastWeatherDataArray.map(weatherData => {
-    const forecastWeather = new ForecastWeather(weatherData);
-    return forecastWeather;
-  });
-
-  forecastDayArray.map(forecastDay =>
-    forecastDayView.displayForecastDay(forecastDay)
-  );
-};
-
 const controlCurrentTips = async function () {
-  const currentWeatherData = await model.setCurrentTips();
+  const currentWeatherData = await model.getCurrentTipsData();
 
   const currentDayTips = new CurrentTips(currentWeatherData);
 
@@ -43,6 +31,19 @@ const controlCurrentTips = async function () {
   currentDayTipsView.displayCurrentTipsDate(currentDayTips.currentDate);
 
   currentDayTipsView.displayCurrentTipsAqi(currentDayTips.aqiData);
+};
+
+const controlForecastWeather = async function () {
+  const forecastWeatherDataArray = await model.getForecastWeatherData();
+
+  const forecastDayArray = forecastWeatherDataArray.map(weatherData => {
+    const forecastWeather = new ForecastWeather(weatherData);
+    return forecastWeather;
+  });
+
+  forecastDayArray.map(forecastDay =>
+    forecastDayView.displayForecastDay(forecastDay)
+  );
 };
 
 const controlToggleDegrees = function () {
@@ -80,12 +81,22 @@ const controlForecastDropdown = function (i) {
   forecastTipsInner[i].classList.toggle('hidden');
 };
 
-export const init = async function () {
-  toggleLoader();
-  await controlCurrentWeather();
-  await controlForecastWeather();
-  await controlCurrentTips();
+const initHandlers = function () {
   forecastDayView.addHandlerForecastDropdown(controlForecastDropdown);
   currentDayView.addHandlerToggleDegrees(controlToggleDegrees);
+};
+
+export const init = async function () {
+  toggleLoader();
+  try {
+    await controlCurrentWeather();
+    await controlForecastWeather();
+    await controlCurrentTips();
+  } catch (err) {
+    displayError();
+    console.log('nope', err);
+  }
+
+  initHandlers();
   toggleLoader();
 };
