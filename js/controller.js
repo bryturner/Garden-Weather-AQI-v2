@@ -14,8 +14,6 @@ const controlCurrentWeather = async function () {
   const currentDay = new CurrentWeather(currentWeatherData);
 
   currentDayView.displayCurrentWeather(currentDay);
-
-  //   currentDayView.displayCurrentTips(currentDay);
 };
 
 const controlForecastWeather = async function () {
@@ -36,7 +34,7 @@ const controlCurrentTips = async function () {
 
   const currentDayTips = new CurrentTips(currentWeatherData);
 
-  currentDayTipsView.displayCurrentTipsTemps(currentDayTips._currentTempsArray);
+  currentDayTipsView.displayCurrentTipsTemps(currentDayTips.currentTempsArray);
 
   currentDayTipsView.displayCurrentTipsPrecip(
     currentDayTips.futurePrecipPercentage

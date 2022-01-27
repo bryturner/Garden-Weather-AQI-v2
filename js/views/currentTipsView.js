@@ -30,5 +30,4 @@ export const displayCurrentTipsAqi = aqiData => {
   } else {
     aqiTip.innerHTML = `The air quality index today is ${aqiData.aqiNumber} and is considered ${aqiData.aqiCondition}. ${aqiData.aqiRecommendation}`;
   }
-  console.log(aqiData);
 };

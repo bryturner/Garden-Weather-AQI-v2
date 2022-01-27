@@ -11,7 +11,7 @@ export const setCurrentWeather = async function () {
   const weatherData = await getWeatherData();
   const aqiData = await getCurrentAqiData();
 
-  const weatherObj = {
+  const currentWeatherObj = {
     dateTime: weatherData.current.dt,
     lowTemp: weatherData.daily[0].temp.min,
     highTemp: weatherData.daily[0].temp.max,
@@ -23,10 +23,6 @@ export const setCurrentWeather = async function () {
     weatherDescription: weatherData.current.weather[0].description,
     sunriseTime: weatherData.daily[0].sunrise,
     sunsetTime: weatherData.daily[0].sunset,
-    dailyWeatherArray: weatherData.daily,
-    morningTemp: weatherData.daily[0].temp.morn,
-    eveningTemp: weatherData.daily[0].temp.eve,
-    daytimeTemp: weatherData.daily[0].temp.day,
     aqiNumber: aqiData.list[0].components.pm2_5,
     city: locationData.city,
     region: locationData.region,
@@ -34,7 +30,7 @@ export const setCurrentWeather = async function () {
     currentLocation: locationData,
   };
 
-  return weatherObj;
+  return currentWeatherObj;
 };
 
 export const setCurrentTips = async function () {
@@ -49,13 +45,14 @@ export const setCurrentTips = async function () {
     daytimeTemp: weatherData.daily[0].temp.day,
     aqiNumber: aqiData.list[0].components.pm2_5,
   };
-  console.log(currentTipsObj);
+
   return currentTipsObj;
 };
 
 export const setForecastWeather = async function () {
   const weatherData = await getWeatherData();
 
+  // Slice weatherData array to exclude current day weather info from forecast display
   const forecastDataArray = weatherData.daily.slice(
     1,
     weatherData.daily.length
@@ -86,7 +83,8 @@ export const getCurrentLocationData = async function (
 ) {
   const response = await fetch(`${URL_LOCATION}token=${API_KEY_LOC}`);
   if (!response.ok) throw new Error(`${errorMessage} (${response.status})`);
-  return await response.json();
+  const currentLocationData = await response.json();
+  return currentLocationData;
 };
 
 export const getCurrentLatAndLon = async function () {

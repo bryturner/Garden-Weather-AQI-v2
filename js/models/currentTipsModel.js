@@ -10,6 +10,7 @@ class CurrentTips {
     this.formatMorningTemp();
     this.formatDaytimeTemp();
     this.formatEveningTemp();
+    this.setCurrentTemps();
     this.setAqiData();
     this.getFuturePrecipPercentage();
   }
@@ -40,6 +41,10 @@ class CurrentTips {
     this.eveningTemp = helper.formatTemp(this.currentWeatherData.eveningTemp);
 
     this._currentTempsArray.push(this.eveningTemp);
+  }
+
+  setCurrentTemps() {
+    this.currentTempsArray = this._currentTempsArray;
   }
 
   _convertPm2_5ToAqi(pm2_5) {

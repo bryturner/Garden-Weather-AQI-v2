@@ -6,21 +6,16 @@ class CurrentWeather {
 
     this.formatCurrentLocation();
     this.formatCurrentTime();
-    this.formatCurrentDate();
     this.formatLowTemp();
     this.formatHighTemp();
     this.formatCurrentTemp();
     this.formatFeelsLikeTemp();
-    this.formatMorningTemp();
-    this.formatDaytimeTemp();
-    this.formatEveningTemp();
     this.formatPrecip();
     this.formatSunrise();
     this.formatSunset();
     this.formatWeatherDescription();
     this.setWeatherIcon();
     this.setAqiNumber();
-    this.getFuturePrecipPercentage();
   }
 
   formatCurrentLocation() {
@@ -31,16 +26,6 @@ class CurrentWeather {
     this.currentTime = helper.convertToHrsAndMins(
       this.currentWeatherData.dateTime
     );
-  }
-
-  formatCurrentDate() {
-    this.currentDate = new Date(
-      this.currentWeatherData.dateTime * 1000
-    ).toLocaleDateString([], {
-      weekday: 'long',
-      month: 'short',
-      day: 'numeric',
-    });
   }
 
   formatLowTemp() {
@@ -59,18 +44,6 @@ class CurrentWeather {
     this.feelsLikeTemp = helper.formatTemp(
       this.currentWeatherData.feelsLikeTemp
     );
-  }
-
-  formatMorningTemp() {
-    this.morningTemp = helper.formatTemp(this.currentWeatherData.morningTemp);
-  }
-
-  formatDaytimeTemp() {
-    this.daytimeTemp = helper.formatTemp(this.currentWeatherData.daytimeTemp);
-  }
-
-  formatEveningTemp() {
-    this.eveningTemp = helper.formatTemp(this.currentWeatherData.eveningTemp);
   }
 
   formatPrecip() {
@@ -136,25 +109,6 @@ class CurrentWeather {
     this.aqiNumber = this._convertPm2_5ToAqi(this.currentWeatherData.aqiNumber);
     return this.aqiNumber;
   }
-
-  _findLargestPrecipPercentage(precipArray) {
-    const largestPercent = Math.max(...precipArray.slice(0, 3));
-    const convertedPercent = largestPercent * 100;
-    return convertedPercent;
-  }
-
-  getFuturePrecipPercentage() {
-    const precipArray = this.currentWeatherData.dailyWeatherArray.map(
-      arr => arr.pop
-    );
-    this.futurePrecipPercentage =
-      this._findLargestPrecipPercentage(precipArray);
-  }
 }
 
 export default CurrentWeather;
-
-// stopping point - use all functions from older version make 2 classes current/forecast
-// use helpers for functions used by both instead of extending Day class
-// when getting values from class, use ex. currentWeather.time instead of function
-// must call all functions in class in constructor

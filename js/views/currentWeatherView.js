@@ -2,6 +2,7 @@ import { parseToHtml } from '../helpers.js';
 
 export const addHandlerToggleDegrees = function (handler) {
   const degreeChangeCheckbox = document.querySelector('.deg-checkbox');
+
   degreeChangeCheckbox.addEventListener('change', function () {
     handler();
   });
@@ -99,52 +100,5 @@ export const displayCurrentWeather = currentDay => {
   currentDayElementSelect.insertAdjacentElement(
     'afterbegin',
     htmlCurrentDoc.body.firstChild
-  );
-};
-
-export const displayCurrentTips = currentDay => {
-  const currentTipsAside = document.querySelector('.current-tips');
-  currentTipsAside.innerHTML = '';
-  const html = `
- <div class="current-tips-container"> 
-  <div class="current-tips-date">${currentDay.currentDate}</div>
-    <ul class="current-tips-list no-bullets flex-col">
-      <li class="current-tip-list-item">
-        <p class="current-tip">
-          Today the temperature will be
-          <span class="temp-select">${currentDay.morningTemp}</span
-          ><span class="deg-style-small deg-select">&deg;F</span>
-          in the morning,
-          <span class="temp-select">${currentDay.daytimeTemp}</span
-          ><span class="deg-style-small deg-select">&deg;F</span>
-          during the day and
-          <span class="temp-select">${currentDay.eveningTemp}</span
-          ><span class="deg-style-small deg-select">&deg;F</span>
-          in the evening. The best time to garden is when the temperature is
-          right for you.
-        </p>
-      </li>
-      <ion-icon name="leaf" class="current-leaf-icon"></ion-icon>
-      <li class="current-tip-list-item">
-        <p class="current-tip">
-          There is a ${currentDay.futurePrecipPercentage}% chance of precipitation in the next few days. Make sure
-          that your plants get enough water... just not too much.
-        </p>
-      </li>
-      <ion-icon name="leaf" class="current-leaf-icon"></ion-icon>
-      <li class="current-tip-list-item">
-        <p class="current-tip" id="aqi-tip">
-          The air quality index today is ${currentDay.aqiNumber} and is considered ${currentDay.aqiCondition}. ${currentDay.aqiRecommendation}
-        </p>
-      </li>
-    </ul>
-   </div> 
-    `;
-
-  const htmlTipsDoc = parseToHtml(html);
-
-  currentTipsAside.insertAdjacentElement(
-    'afterbegin',
-    htmlTipsDoc.body.firstElementChild
   );
 };
