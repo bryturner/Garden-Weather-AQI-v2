@@ -27,13 +27,13 @@ export const setCurrentWeather = async function () {
     morningTemp: weatherData.daily[0].temp.morn,
     eveningTemp: weatherData.daily[0].temp.eve,
     daytimeTemp: weatherData.daily[0].temp.day,
-    aqiNumbersArray: aqiData.list,
+    aqiNumber: aqiData.list[0].components.pm2_5,
     city: locationData.city,
     region: locationData.region,
     country: locationData.country,
     currentLocation: locationData,
   };
-  console.log(aqiData.list);
+
   return weatherObj;
 };
 

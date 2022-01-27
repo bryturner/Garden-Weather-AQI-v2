@@ -134,21 +134,8 @@ class CurrentWeather {
     if (pm2_5 > 2_50.5) return Math.round(0.99 * (pm2_5 - 2_50.5) + 301);
   }
 
-  _sumPm2_5Nums(pm2_5Array) {
-    return pm2_5Array.reduce((acc, cur) => acc + cur);
-  }
-
-  _getPm2_5Array(aqiArr) {
-    return aqiArr.map(aqi => aqi.components.pm2_5);
-  }
-
   formatAqi() {
-    const pm2_5Array = this._getPm2_5Array(
-      this.currentWeatherData.aqiNumbersArray
-    );
-    const sumPm2_5 = this._sumPm2_5Nums(pm2_5Array);
-    const avgPm2_5 = Math.trunc(sumPm2_5 / pm2_5Array.length);
-    this.aqiNumber = this._convertPm2_5ToAqi(avgPm2_5);
+    this.aqiNumber = this._convertPm2_5ToAqi(this.currentWeatherData.aqiNumber);
     return this.aqiNumber;
   }
 
