@@ -1,10 +1,13 @@
 import * as model from './models/model.js';
 import * as currentDayView from './views/currentWeatherView.js';
 import * as forecastDayView from './views/forecastView.js';
+import * as currentDayTipsView from './views/currentTipsView.js';
 import { toggleLoader } from './views/loaderView.js';
 import CurrentWeather from './models/currentDayModel.js';
 import ForecastWeather from './models/forecastDayModel.js';
+import CurrentTips from './models/currentTipsModel.js';
 
+// Add timeout error handling on all control functions
 const controlCurrentWeather = async function () {
   const currentWeatherData = await model.setCurrentWeather();
 
@@ -12,7 +15,7 @@ const controlCurrentWeather = async function () {
 
   currentDayView.displayCurrentWeather(currentDay);
 
-  currentDayView.displayCurrentTips(currentDay);
+  //   currentDayView.displayCurrentTips(currentDay);
 };
 
 const controlForecastWeather = async function () {
@@ -26,6 +29,22 @@ const controlForecastWeather = async function () {
   forecastDayArray.map(forecastDay =>
     forecastDayView.displayForecastDay(forecastDay)
   );
+};
+
+const controlCurrentTips = async function () {
+  const currentWeatherData = await model.setCurrentTips();
+
+  const currentDayTips = new CurrentTips(currentWeatherData);
+
+  currentDayTipsView.displayCurrentTipsTemps(currentDayTips._currentTempsArray);
+
+  currentDayTipsView.displayCurrentTipsPrecip(
+    currentDayTips.futurePrecipPercentage
+  );
+
+  currentDayTipsView.displayCurrentTipsDate(currentDayTips.currentDate);
+
+  currentDayTipsView.displayCurrentTipsAqi(currentDayTips.aqiData);
 };
 
 const controlToggleDegrees = function () {
@@ -67,6 +86,7 @@ export const init = async function () {
   toggleLoader();
   await controlCurrentWeather();
   await controlForecastWeather();
+  await controlCurrentTips();
   forecastDayView.addHandlerForecastDropdown(controlForecastDropdown);
   currentDayView.addHandlerToggleDegrees(controlToggleDegrees);
   toggleLoader();

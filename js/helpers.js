@@ -21,7 +21,7 @@ export const getWeatherDescription = function (
   // Special cases from API are handled by hard-coding.
   if (weatherMain === 'Thunderstorm') return 'Thunderstorm';
 
-  if (weatherMain === 'Drizzle') return 'Drizzle';
+  if (weatherMain === 'Drizzle' || weatherMain === 'Mist') return 'Drizzle';
 
   if (weatherId > 519 && weatherId < 531) return 'Shower Rain';
 

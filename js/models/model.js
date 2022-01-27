@@ -37,6 +37,22 @@ export const setCurrentWeather = async function () {
   return weatherObj;
 };
 
+export const setCurrentTips = async function () {
+  const weatherData = await getWeatherData();
+  const aqiData = await getCurrentAqiData();
+
+  const currentTipsObj = {
+    dateTime: weatherData.current.dt,
+    dailyWeatherArray: weatherData.daily,
+    morningTemp: weatherData.daily[0].temp.morn,
+    eveningTemp: weatherData.daily[0].temp.eve,
+    daytimeTemp: weatherData.daily[0].temp.day,
+    aqiNumber: aqiData.list[0].components.pm2_5,
+  };
+  console.log(currentTipsObj);
+  return currentTipsObj;
+};
+
 export const setForecastWeather = async function () {
   const weatherData = await getWeatherData();
 
