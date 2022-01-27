@@ -28,9 +28,6 @@ const controlForecastWeather = async function () {
   );
 };
 
-// ========================================================
-// ========================================================
-
 const controlToggleDegrees = function () {
   const degreeChangeCheckbox = document.querySelector('.deg-checkbox');
   const degreeAbbreviations = document.querySelectorAll('.deg-select');
@@ -70,7 +67,7 @@ export const init = async function () {
   toggleLoader();
   await controlCurrentWeather();
   await controlForecastWeather();
-  currentDayView.addHandlerToggleDegrees(controlToggleDegrees);
   forecastDayView.addHandlerForecastDropdown(controlForecastDropdown);
+  currentDayView.addHandlerToggleDegrees(controlToggleDegrees);
   toggleLoader();
 };

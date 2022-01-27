@@ -33,7 +33,7 @@ export const setCurrentWeather = async function () {
     country: locationData.country,
     currentLocation: locationData,
   };
-  //   console.log(weatherObj);
+  console.log(aqiData.list);
   return weatherObj;
 };
 
@@ -62,7 +62,6 @@ export const setForecastWeather = async function () {
     };
   });
 
-  //   console.log(forecastObjectArray);
   return forecastObjectArray;
 };
 

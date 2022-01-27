@@ -623,7 +623,7 @@ body {
 
 .hidden {
   opacity: 0;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .hide-load {

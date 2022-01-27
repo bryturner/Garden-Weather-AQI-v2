@@ -3,6 +3,7 @@ import * as helper from '../helpers.js';
 class CurrentWeather {
   constructor(currentWeatherData) {
     this.currentWeatherData = currentWeatherData;
+    this.aqiTipsText = document.getElementById('aqi-tip');
 
     this.formatCurrentLocation();
     this.formatCurrentTime();
@@ -153,9 +154,7 @@ class CurrentWeather {
 
   setAqiCondition() {
     const aqiNumber = this.formatAqi();
-    if (aqiNumber === 'n/a')
-      this.aqiCondition =
-        'cannot be found. Please check your local weather information.';
+    if (aqiNumber === 'n/a') return (this.aqiTipsText = '');
     if (aqiNumber <= 50) this.aqiCondition = 'healthy';
     if (aqiNumber > 50 && aqiNumber <= 100) this.aqiCondition = 'moderate';
     if (aqiNumber > 100 && aqiNumber <= 150)
@@ -166,7 +165,7 @@ class CurrentWeather {
 
   setAqiRecommendation() {
     const aqiNumber = this.formatAqi();
-    if (aqiNumber === 'n/a') this.aqiRecommendation = '';
+    if (aqiNumber === 'n/a') return (this.aqiTipsText = '');
     if (aqiNumber <= 50)
       this.aqiRecommendation =
         'It is a great day to garden! Get outside and enjoy the fresh air.';

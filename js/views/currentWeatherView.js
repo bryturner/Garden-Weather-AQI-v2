@@ -126,7 +126,7 @@ export const displayCurrentTips = currentDay => {
       </li>
       <ion-icon name="leaf" class="current-leaf-icon"></ion-icon>
       <li class="current-tip-list-item">
-        <p class="current-tip">
+        <p class="current-tip" id="aqi-tip">
           The air quality index today is ${currentDay.aqiNumber} and is considered ${currentDay.aqiCondition}. ${currentDay.aqiRecommendation}
         </p>
       </li>
