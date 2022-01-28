@@ -23,7 +23,7 @@ export const displayForecastDay = forecastDay => {
           ><span class="deg-style deg-select">&deg;F</span>
         </div>
       </li>
-      <li class="forecast-list-item flex-row">
+      <li class="forecast-list-item flex-row mar-left-sm">
         <img src="/img/humidity.png" alt="" class="forecast-img-icon" crossorigin />
         <div class="forecast-detail forecast-rain">${forecastDay.precipPercentage}%</div>
       </li>
