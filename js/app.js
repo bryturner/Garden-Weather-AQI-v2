@@ -1,3 +1,3 @@
 import * as controller from './controller.js';
 
-controller.init();
+// controller.init();
