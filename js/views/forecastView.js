@@ -24,15 +24,15 @@ export const displayForecastDay = forecastDay => {
         </p>
       </li>
       <li class="forecast-list-item flex-row mar-left-sm forecast-precip">
-        <img src="/img/humidity.png" alt="" class="forecast-img-icon" crossorigin />
+        <img src="./img/humidity.png" alt="precipitation icon" class="forecast-img-icon" crossorigin />
         <p class="forecast-detail">${forecastDay.precipPercentage}%</p>
       </li>
       <li class="forecast-list-item flex-row mar-left-sm forecast-sunrise">
-        <img src="/img/sunrise.png" alt="" class="forecast-img-icon" crossorigin/>
+        <img src="./img/sunrise.png" alt="sunrise icon" class="forecast-img-icon" crossorigin/>
         <p class="forecast-detail ">${forecastDay.sunriseTime}</p>
       </li>
       <li class="forecast-list-item flex-row mar-left-sm forecast-sunset">
-        <img src="/img/sunset.png" alt="" class="forecast-img-icon" crossorigin/>
+        <img src="./img/sunset.png" alt="sunset icon" class="forecast-img-icon" crossorigin/>
         <p class="forecast-detail forecast-sunset">${forecastDay.sunsetTime}</p>
       </li>
     </ul>
