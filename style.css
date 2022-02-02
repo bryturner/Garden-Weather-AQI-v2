@@ -16,20 +16,21 @@ html {
 body {
   background-image: url(./img/flowers.jpg);
   font-weight: 500;
-  background-repeat: repeat;
   background-size: cover;
-  background-position: top;
+  background-position: top left;
+  background-attachment: fixed;
   font-family: 'IBM Plex Sans', sans-serif;
   overflow-x: hidden;
   color: #333;
   position: relative;
-  padding: 3rem;
+  /* padding: 3rem; */
 }
 
 .body-container {
   display: grid;
   grid-template-columns: 60fr 40fr;
   column-gap: 1.2rem;
+  padding: 3rem;
 }
 
 .weather-container {
@@ -37,6 +38,28 @@ body {
   padding: 2rem;
   border-radius: 12px;
   position: relative;
+}
+
+.error-container {
+  margin: 0 auto;
+  background-color: var(--color-primary);
+  padding: 20rem 10rem;
+  border-radius: 12px;
+  width: 80%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 25%);
+}
+
+.error-header {
+  font-size: 6rem;
+  text-align: center;
+}
+
+.error-text {
+  font-size: 4rem;
+  text-align: center;
 }
 
 /* ==== Utilities ==== */
@@ -49,25 +72,8 @@ body {
   display: flex;
 }
 
-.grid-2-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.min-width {
-  min-width: 35rem;
-}
-
 .mar-left-sm {
   margin-left: 1.2rem;
-}
-
-.no-bullets {
-  list-style: none;
 }
 
 /* ==== General Styles ==== */
@@ -81,65 +87,7 @@ body {
   vertical-align: top;
 }
 
-.btn {
-  display: inline-block;
-  background: none;
-  border: none;
-  font-size: inherit;
-  color: rgb(9, 12, 170);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-/* ==== Current Weather Information ==== */
-.ph-info {
-  position: absolute;
-  top: 2%;
-  left: 2%;
-  font-size: 3.2rem;
-  color: #333;
-  cursor: pointer;
-  width: 4rem;
-  height: 4rem;
-}
-
-.page-info-container {
-  z-index: 2;
-  position: absolute;
-  top: 1%;
-  left: 4.5%;
-  border-radius: 11px;
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.4);
-  background-color: var(--color-primary-light);
-  display: none;
-}
-
-.ph-info:hover + .page-info-container {
-  display: block;
-}
-
-.page-info-container:hover {
-  display: block;
-}
-
-.page-info-list {
-  display: grid;
-  row-gap: 1.2rem;
-  padding: 3rem;
-  margin-left: 2.4rem;
-}
-
-.page-info {
-  font-size: 1.6rem;
-}
-
-.external-link:link,
-.external-link:visited {
-  color: rgb(9, 12, 170);
-  font-size: inherit;
-}
-
-/* ==== Current Day ==== */
+/* ==== !Current Day ==== */
 .current-day-container {
   margin: 0 auto;
   margin-bottom: 1.6rem;
@@ -211,6 +159,7 @@ body {
 .current-details-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  list-style: none;
   row-gap: 2.4rem;
   column-gap: 5rem;
 }
@@ -244,6 +193,7 @@ body {
 
 .current-tips-list {
   background-color: var(--color-primary-light);
+  list-style: none;
   padding: 2rem;
   border-radius: 12px;
   gap: 2rem;
@@ -259,6 +209,7 @@ body {
   font-weight: 400;
   font-size: 1.8rem;
 }
+
 /* ==== Slider ==== */
 .slider-container-outer {
   margin-top: auto;
@@ -325,7 +276,7 @@ body {
   font-size: 1.8rem;
 }
 
-/* ==== Forecast Day ==== */
+/* ==== !Forecast Day ==== */
 .forecast-day-container {
   margin: 0 auto;
   margin-bottom: 0.4rem;
@@ -356,6 +307,7 @@ body {
 .forecast-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  list-style: none;
   padding-left: 2rem;
   margin-right: 4rem;
 }
@@ -458,8 +410,8 @@ body {
 }
 
 .forecast-tip {
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 30fr;
 }
 
 .forecast-leaf-icon {
@@ -471,6 +423,40 @@ body {
 .forecast-tip-text {
   font-weight: 400;
   font-size: 1.8rem;
+}
+
+/* ==== !Footer ==== */
+.footer-container {
+  margin: 0 auto;
+  background-color: var(--color-primary);
+  width: 100%;
+  padding: 3rem 6rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.footer-list-item {
+  font-size: 1.6rem;
+}
+
+.footer-portfolio {
+  justify-self: center;
+}
+
+.footer-attribute {
+  justify-self: right;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 1.6rem;
 }
 
 /* ==== Loader + Animation ==== */
@@ -624,7 +610,7 @@ body {
 
 .hidden {
   opacity: 0;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .hide-load {

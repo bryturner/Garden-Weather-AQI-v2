@@ -1,6 +1,14 @@
 import { parseToHtml } from '../helpers.js';
 
-export const displayCurrentWeather = currentWeather => {
+export const addHandlerToggleDegrees = function (handler) {
+  const degreeChangeCheckbox = document.querySelector('.deg-checkbox');
+
+  degreeChangeCheckbox.addEventListener('change', function () {
+    handler();
+  });
+};
+
+export const displayCurrentWeather = currentDay => {
   const currentDayElementSelect = document.querySelector(
     '.current-day-element-select'
   );
@@ -8,9 +16,9 @@ export const displayCurrentWeather = currentWeather => {
   const html = `
 <div class="current-day-first-child">
  <div class="current-day-container">  
-  <div class="flex-col mar-left-sm">
-    <div class="current-location">${currentWeather.getCurrentLocation()}</div>
-    <div class="current-time">As of ${currentWeather.getCurrentTime()}</div>
+  <div class="flex-col mar-left-sm current-location-container">
+    <div class="current-location">${currentDay.currentLocation}</div>
+    <div class="current-time">As of ${currentDay.currentTime}</div>
     <div class="slider-container-outer">
       <div class="slider-container">
         <div class="fahrenheit">&deg;F</div>
@@ -29,21 +37,21 @@ export const displayCurrentWeather = currentWeather => {
   <div class="icon-temp-container">
     <div id="lg-current-icon">
       <img
-        src="./img/${currentWeather.getWeatherIcon()}.svg"
-        alt="${currentWeather.getWeatherIcon()}-icon"
+        src="./img/${currentDay.weatherIcon}.svg"
+        alt="${currentDay.weatherIcon}-icon"
         class="lg-svg-icon"
         crossorigin
       />
     </div>
     <div class="current-temp">
-      <span class="temp-select" id="temp-current">${currentWeather.getCurrentTemp()}</span
+      <span class="temp-select" id="temp-current">${currentDay.currentTemp}</span
       ><span class="deg-style deg-select">&deg;F</span>
     </div>
     <div class="current-description-container">
-      <div class="current-description">${currentWeather.upperCaseDescription()}</div>
+      <div class="current-description">${currentDay.weatherDescription}</div>
       <div class="feels-like">
         Feels Like
-        <span class="temp-select" id="temp-feels">${currentWeather.getFeelsLike()}</span
+        <span class="temp-select" id="temp-feels">${currentDay.feelsLikeTemp}</span
         ><span class="deg-style-small deg-select">&deg;F</span>
       </div>
     </div>
@@ -53,34 +61,34 @@ export const displayCurrentWeather = currentWeather => {
     <ul class="current-details-list no-bullets">
       <li class="current-details-list-item">
         <div class="current-detail-title">Sunrise</div>
-        <div class="current-detail" id="current-sunrise">${currentWeather.getSunrise()} </div>
+        <div class="current-detail" id="current-sunrise">${currentDay.sunriseTime} </div>
       </li>
   
       <li class="current-details-list-item">
         <div class="current-detail-title">Sunset</div>
-        <div class="current-detail" id="current-sunset">${currentWeather.getSunset()} </div>
+        <div class="current-detail" id="current-sunset">${currentDay.sunsetTime} </div>
       </li>
       <li class="current-details-list-item">
         <div class="current-detail-title">Precip.</div>
-        <div class="current-detail" id="current-rain">${currentWeather.getPrecipitation()}%</div>
+        <div class="current-detail" id="current-rain">${currentDay.precipPercentage}%</div>
       </li>
       <li class="current-details-list-item">
         <div class="current-detail-title">Low</div>
         <div class="current-detail">
-          <span class="temp-select" id="current-low">${currentWeather.getLowTemp()}</span
+          <span class="temp-select" id="current-low">${currentDay.lowTemp}</span
           ><span class="deg-style deg-select">&deg;F</span>
         </div>
       </li>
       <li class="current-details-list-item">
         <div class="current-detail-title">High</div>
         <div class="current-detail">
-          <span class="temp-select" id="current-high">${currentWeather.getHighTemp()} </span
+          <span class="temp-select" id="current-high">${currentDay.highTemp} </span
           ><span class="deg-style deg-select">&deg;F</span>
         </div>
       </li>
       <li class="current-details-list-item">
         <div class="current-detail-title">AQI</div>
-        <div class="current-detail aqi-num" id="current-AQI">${currentWeather.getAqi()} </div>
+        <div class="current-detail aqi-num" id="current-AQI">${currentDay.aqiNumber} </div>
       </li>
     </ul>
   </div>
@@ -92,52 +100,5 @@ export const displayCurrentWeather = currentWeather => {
   currentDayElementSelect.insertAdjacentElement(
     'afterbegin',
     htmlCurrentDoc.body.firstChild
-  );
-};
-
-export const displayCurrentTips = function (currentTips) {
-  const currentTipsAside = document.querySelector('.current-tips');
-  currentTipsAside.innerHTML = '';
-  const html = `
- <div class="current-tips-container"> 
-  <div class="current-tips-date">${currentTips.getCurrentDate()}</div>
-    <ul class="current-tips-list no-bullets flex-col">
-      <li class="current-tip-list-item">
-        <p class="current-tip">
-          Today the temperature will be
-          <span class="temp-select">${currentTips.getMorningTemp()}</span
-          ><span class="deg-style-small deg-select">&deg;F</span>
-          in the morning,
-          <span class="temp-select">${currentTips.getDayTemp()}</span
-          ><span class="deg-style-small deg-select">&deg;F</span>
-          during the day and
-          <span class="temp-select">${currentTips.getEveningTemp()}</span
-          ><span class="deg-style-small deg-select">&deg;F</span>
-          in the evening. The best time to garden is when the temperature is
-          right for you.
-        </p>
-      </li>
-      <ion-icon name="leaf" class="current-leaf-icon"></ion-icon>
-      <li class="current-tip-list-item">
-        <p class="current-tip">
-          There is a ${currentTips.getFuturePrecipitation()}% chance of precipitation in the next few days. Make sure
-          that your plants get enough water... just not too much.
-        </p>
-      </li>
-      <ion-icon name="leaf" class="current-leaf-icon"></ion-icon>
-      <li class="current-tip-list-item">
-        <p class="current-tip">
-          The air quality index today is ${currentTips.getAqi()} and is considered ${currentTips.getAqiCondition()}. ${currentTips.getAqiRecommendation()}
-        </p>
-      </li>
-    </ul>
-   </div> 
-    `;
-
-  const htmlTipsDoc = parseToHtml(html);
-
-  currentTipsAside.insertAdjacentElement(
-    'afterbegin',
-    htmlTipsDoc.body.firstElementChild
   );
 };
