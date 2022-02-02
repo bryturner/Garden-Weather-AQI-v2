@@ -1,5 +1,3 @@
-// ===========================================
-
 export const parseToHtml = string => {
   const parser = new DOMParser();
   return parser.parseFromString(string, 'text/html');
