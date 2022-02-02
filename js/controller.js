@@ -8,7 +8,6 @@ import CurrentWeather from './models/currentDayModel.js';
 import ForecastWeather from './models/forecastDayModel.js';
 import CurrentTips from './models/currentTipsModel.js';
 
-// Add timeout error handling on all control functions
 const controlCurrentWeather = async function () {
   const currentWeatherData = await model.getCurrentWeatherData();
 
@@ -16,22 +15,6 @@ const controlCurrentWeather = async function () {
 
   currentDayView.displayCurrentWeather(currentDay);
 };
-
-// const controlCurrentTips = async function () {
-//   const currentWeatherData = await model.getCurrentTipsData();
-
-//   const currentDayTips = new CurrentTips(currentWeatherData);
-
-//   currentDayTipsView.displayCurrentTipsTemps(currentDayTips.currentTempsArray);
-
-//   currentDayTipsView.displayCurrentTipsPrecip(
-//     currentDayTips.futurePrecipPercentage
-//   );
-
-//   currentDayTipsView.displayCurrentTipsDate(currentDayTips.currentDate);
-
-//   currentDayTipsView.displayCurrentTipsAqi(currentDayTips.aqiData);
-// };
 
 const controlCurrentTips = async function () {
   const currentWeatherData = await model.getCurrentTipsData();

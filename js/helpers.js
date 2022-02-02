@@ -21,7 +21,7 @@ export const getWeatherDescription = function (
   // Special cases from API are handled by hard-coding.
   if (weatherMain === 'Thunderstorm') return 'Thunderstorm';
 
-  if (weatherMain === 'Drizzle' || weatherMain === 'Mist') return 'Drizzle';
+  if (weatherMain === 'Drizzle') return 'Drizzle';
 
   if (weatherId > 519 && weatherId < 531) return 'Shower Rain';
 
@@ -54,7 +54,7 @@ export const getWeatherIcon = function (
 ) {
   // Use the OpenWeather API descriptions (this.weatherMain) and ids (this.weatherId) to determine which weather icon should be displayed. **The strings being returned are the file names of the icon svg
 
-  // Check to see if it is dark in the current location in order to display night icons
+  // Check to see if it is nighttime in the current location in order to display night icons
   if (dateTime < sunriseTime || dateTime > sunsetTime) {
     if (weatherId === 500) return 'night-light-rain';
     if (weatherId === 800) return 'night-clear';
@@ -69,6 +69,8 @@ export const getWeatherIcon = function (
   if (weatherMain === 'Dust' || weatherMain === 'Sand') return 'sand-dust';
 
   if (weatherMain === 'Smoke' || weatherMain === 'Fog') return 'fog-smoke';
+
+  if (weatherMain === 'Mist') return 'Drizzle';
   // All other svg icon file names and Openweather API weather condition titles match and can be used to display the correct icon
 
   return weatherMain;
