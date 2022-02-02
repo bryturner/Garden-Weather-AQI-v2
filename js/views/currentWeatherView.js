@@ -17,8 +17,8 @@ export const displayCurrentWeather = currentDay => {
 <div class="current-day-first-child">
  <div class="current-day-container">  
   <div class="flex-col mar-left-sm current-location-container">
-    <div class="current-location">${currentDay.currentLocation}</div>
-    <div class="current-time">As of ${currentDay.currentTime}</div>
+    <p class="current-location">${currentDay.currentLocation}</p>
+    <p class="current-time">As of ${currentDay.currentTime}</p>
     <div class="slider-container-outer">
       <div class="slider-container">
         <div class="fahrenheit">&deg;F</div>
@@ -48,16 +48,16 @@ export const displayCurrentWeather = currentDay => {
       ><span class="deg-style deg-select">&deg;F</span>
     </div>
     <div class="current-description-container">
-      <div class="current-description">${currentDay.weatherDescription}</div>
-      <div class="feels-like">
+      <p class="current-description">${currentDay.weatherDescription}</p>
+      <p class="feels-like">
         Feels Like
         <span class="temp-select" id="temp-feels">${currentDay.feelsLikeTemp}</span
         ><span class="deg-style-small deg-select">&deg;F</span>
-      </div>
+      </p>
     </div>
   </div>
   <div class="current-details-container flex-col">
-    <div class="current-day">Today's Details</div>
+    <h2 class="current-day">Today's Details</h2>
     <ul class="current-details-list no-bullets">
       <li class="current-details-list-item">
         <div class="current-detail-title">Sunrise</div>
@@ -65,30 +65,30 @@ export const displayCurrentWeather = currentDay => {
       </li>
   
       <li class="current-details-list-item">
-        <div class="current-detail-title">Sunset</div>
-        <div class="current-detail" id="current-sunset">${currentDay.sunsetTime} </div>
+        <p class="current-detail-title">Sunset</p>
+        <p class="current-detail" id="current-sunset">${currentDay.sunsetTime} </p>
       </li>
       <li class="current-details-list-item">
-        <div class="current-detail-title">Precip.</div>
-        <div class="current-detail" id="current-rain">${currentDay.precipPercentage}%</div>
+        <p class="current-detail-title">Precip.</p>
+        <p class="current-detail" id="current-rain">${currentDay.precipPercentage}%</p>
       </li>
       <li class="current-details-list-item">
-        <div class="current-detail-title">Low</div>
-        <div class="current-detail">
+        <p class="current-detail-title">Low</p>
+        <p class="current-detail">
           <span class="temp-select" id="current-low">${currentDay.lowTemp}</span
           ><span class="deg-style deg-select">&deg;F</span>
-        </div>
+        </p>
       </li>
       <li class="current-details-list-item">
-        <div class="current-detail-title">High</div>
-        <div class="current-detail">
+        <p class="current-detail-title">High</p>
+        <p class="current-detail">
           <span class="temp-select" id="current-high">${currentDay.highTemp} </span
           ><span class="deg-style deg-select">&deg;F</span>
-        </div>
+        </p>
       </li>
       <li class="current-details-list-item">
-        <div class="current-detail-title">AQI</div>
-        <div class="current-detail aqi-num" id="current-AQI">${currentDay.aqiNumber} </div>
+        <p class="current-detail-title">AQI</p>
+        <p class="current-detail aqi-num" id="current-AQI">${currentDay.aqiNumber} </p>
       </li>
     </ul>
   </div>

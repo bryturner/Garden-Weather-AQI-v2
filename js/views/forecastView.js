@@ -9,31 +9,31 @@ export const displayForecastDay = forecastDay => {
 <div class="forecast-element">
   <div class="forecast-day-container">
     <div class="forecast-date flex-col">
-      <div class="forecast-day">${forecastDay.shortDayOfWeek} </div>
-      <div class="forecast-day-num">${forecastDay.dayOfMonth} </div>
+      <p class="forecast-day">${forecastDay.shortDayOfWeek} </p>
+      <p class="forecast-day-num">${forecastDay.dayOfMonth} </p>
     </div>
     <ul class="forecast-list no-bullets">
       <li class="forecast-list-item">
-        <div class="forecast-detail-high">
+        <p class="forecast-detail-high">
           <span class="temp-select forecast-high">${forecastDay.highTemp}</span
           ><span class="deg-style deg-select">&deg;F</span>
-        </div>
-        <div class="forecast-detail-low">
+        </p>
+        <p class="forecast-detail-low">
           /<span class="temp-select forecast-low">${forecastDay.lowTemp}</span
           ><span class="deg-style deg-select">&deg;F</span>
-        </div>
+        </p>
       </li>
       <li class="forecast-list-item flex-row mar-left-sm forecast-precip">
         <img src="/img/humidity.png" alt="" class="forecast-img-icon" crossorigin />
-        <div class="forecast-detail">${forecastDay.precipPercentage}%</div>
+        <p class="forecast-detail">${forecastDay.precipPercentage}%</p>
       </li>
       <li class="forecast-list-item flex-row mar-left-sm forecast-sunrise">
         <img src="/img/sunrise.png" alt="" class="forecast-img-icon" crossorigin/>
-        <div class="forecast-detail ">${forecastDay.sunriseTime}</div>
+        <p class="forecast-detail ">${forecastDay.sunriseTime}</p>
       </li>
       <li class="forecast-list-item flex-row mar-left-sm forecast-sunset">
         <img src="/img/sunset.png" alt="" class="forecast-img-icon" crossorigin/>
-        <div class="forecast-detail forecast-sunset">${forecastDay.sunsetTime}</div>
+        <p class="forecast-detail forecast-sunset">${forecastDay.sunsetTime}</p>
       </li>
     </ul>
     <div class="forecast-icon-description-container flex-row">
@@ -44,7 +44,7 @@ export const displayForecastDay = forecastDay => {
           class="sm-svg-icon"
         crossorigin/>
       </div>
-      <div class="forecast-description">${forecastDay.weatherDescriptionUpperCase}</div>
+      <p class="forecast-description">${forecastDay.weatherDescriptionUpperCase}</p>
     </div>
 
     <label class="checkbox-label">
@@ -100,19 +100,9 @@ export const addHandlerForecastDropdown = handler => {
     document.querySelectorAll('.tips-checkbox')
   );
 
-  //   const forecastTipContainers = Array.from(
-  //     document.querySelectorAll('.forecast-tips-container')
-  //   );
-
-  //   const forecastTipsInner = Array.from(
-  //     document.querySelectorAll('.forecast-tips-inner')
-  //   );
-
   forecastCheckboxes.forEach((checkbox, i) => {
     checkbox.addEventListener('change', function () {
       handler(i);
-      // forecastTipContainers[i].classList.toggle('collapsed');
-      // forecastTipsInner[i].classList.toggle('hidden');
     });
   });
 };
