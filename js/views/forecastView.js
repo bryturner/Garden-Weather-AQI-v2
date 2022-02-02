@@ -23,15 +23,15 @@ export const displayForecastDay = forecastDay => {
           ><span class="deg-style deg-select">&deg;F</span>
         </div>
       </li>
-      <li class="forecast-list-item flex-row mar-left-sm">
+      <li class="forecast-list-item flex-row mar-left-sm forecast-precip">
         <img src="/img/humidity.png" alt="" class="forecast-img-icon" crossorigin />
-        <div class="forecast-detail forecast-rain">${forecastDay.precipPercentage}%</div>
+        <div class="forecast-detail">${forecastDay.precipPercentage}%</div>
       </li>
-      <li class="forecast-list-item flex-row mar-left-sm">
+      <li class="forecast-list-item flex-row mar-left-sm forecast-sunrise">
         <img src="/img/sunrise.png" alt="" class="forecast-img-icon" crossorigin/>
-        <div class="forecast-detail forecast-sunrise">${forecastDay.sunriseTime}</div>
+        <div class="forecast-detail ">${forecastDay.sunriseTime}</div>
       </li>
-      <li class="forecast-list-item flex-row mar-left-sm">
+      <li class="forecast-list-item flex-row mar-left-sm forecast-sunset">
         <img src="/img/sunset.png" alt="" class="forecast-img-icon" crossorigin/>
         <div class="forecast-detail forecast-sunset">${forecastDay.sunsetTime}</div>
       </li>

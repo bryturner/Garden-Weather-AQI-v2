@@ -69,6 +69,7 @@ class CurrentTips {
   }
 
   getAqiNumber() {
+    //  this.aqiNumber = 'n/a';
     this.aqiNumber = this._convertPm2_5ToAqi(this.currentWeatherData.aqiNumber);
     return this.aqiNumber;
   }

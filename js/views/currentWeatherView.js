@@ -16,7 +16,7 @@ export const displayCurrentWeather = currentDay => {
   const html = `
 <div class="current-day-first-child">
  <div class="current-day-container">  
-  <div class="flex-col mar-left-sm">
+  <div class="flex-col mar-left-sm current-location-container">
     <div class="current-location">${currentDay.currentLocation}</div>
     <div class="current-time">As of ${currentDay.currentTime}</div>
     <div class="slider-container-outer">

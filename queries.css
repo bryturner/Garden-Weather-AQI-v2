@@ -1,3 +1,13 @@
+@media (max-width: 3000px) {
+  .current-tips-below-1080 {
+    display: none;
+  }
+
+  .below-540-media-icon {
+    display: none;
+  }
+}
+
 @media (max-width: 1400px) {
   .current-day-container {
     min-width: 90em;
@@ -21,7 +31,351 @@
 }
 
 @media (max-width: 1080px) {
+  /* Layout change */
+  .current-tips-below-1080 {
+    display: block;
+  }
+
+  .current-tips-above-1080 {
+    display: none;
+  }
+
+  .body-container {
+    grid-template-columns: 1fr;
+  }
+
+  .current-day-container {
+    margin-bottom: 0;
+  }
+
+  .current-tips-container {
+    padding: 1rem 0;
+  }
+
+  .current-tips-date {
+    margin-bottom: 0;
+    padding-top: 0.6em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .current-tips-list {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    padding: 2em 6em 4em 6em;
+    gap: 3em;
+  }
+
+  .current-tip-list-item {
+    display: grid;
+    grid-template-columns: 1fr 20fr;
+    column-gap: 1em;
+  }
+}
+
+@media (max-width: 830px) {
+  .current-day-container {
+    row-gap: 4em;
+    column-gap: 3em;
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
+  }
+
+  .current-location-container {
+    margin-left: 3em;
+  }
+
+  .current-location {
+    font-size: 2.8em;
+  }
+
+  .current-time {
+    font-size: 2.2em;
+  }
+
+  .fahrenheit,
+  .celsius {
+    font-size: 2em;
+  }
+
+  .current-description {
+    font-size: 2.4em;
+  }
+
+  .feels-like {
+    font-size: 2em;
+  }
+
+  .current-details-container {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .current-details-list {
+    column-gap: 8em;
+  }
+
+  .current-detail-title {
+    font-size: 1.6em;
+  }
+
+  .current-detail {
+    font-size: 2.4em;
+  }
+
+  .current-day,
+  .forecast-sunrise,
+  .forecast-sunset {
+    display: none;
+  }
+
+  .current-tips-list {
+    padding: 1.6em 4em 3em 4em;
+  }
+
+  .forecast-day-container {
+    grid-template-columns: 11fr 41fr 41fr 7fr;
+  }
+
+  .forecast-list {
+    grid-template-columns: 1fr 1fr;
+    margin-right: 0;
+  }
+
+  .forecast-description {
+    font-size: 2.2em;
+  }
+
+  .forecast-tip {
+    column-gap: 1em;
+  }
+}
+
+@media (max-width: 630px) {
+  .current-tip-list-item {
+    column-gap: 1.6em;
+  }
+
+  .forecast-day-container {
+    grid-template-columns: 14fr 31fr 45fr 9fr;
+  }
+
+  .forecast-list {
+    grid-template-columns: 1fr;
+    padding-left: 1.4em;
+  }
+
+  .forecast-precip {
+    display: none;
+  }
+
+  .footer-container {
+    padding: 3em 3em 2em 3em;
+  }
+}
+
+@media (max-width: 540px) {
+  .body-container {
+    padding: 2em 2em 3em 2em;
+  }
+  .current-day-container {
+    grid-template-columns: 1fr;
+    row-gap: 3em;
+  }
+
+  .current-location-container {
+    margin-left: 0;
+    gap: 0.6em;
+  }
+
+  .current-location {
+    font-size: 3.2em;
+    text-align: center;
+  }
+
+  .current-time {
+    margin-bottom: 1.2em;
+    text-align: center;
+  }
+
+  .slider-container-outer {
+    margin: 0 auto;
+  }
+
+  .slider-container {
+    justify-content: center;
+  }
+
+  .lg-svg-icon {
+    height: 12em;
+    width: 12em;
+  }
+
+  .current-details-list {
+    column-gap: 7em;
+  }
+
+  .current-tips-list {
+    padding: 1.2em 3em 3em 3em;
+    gap: 2em;
+  }
+
+  .current-tip-list-item {
+    display: block;
+  }
+
+  .below-540-media-icon {
+    display: block;
+  }
+
+  .above-540-media-icon {
+    display: none;
+  }
+
+  .forecast-tips-container {
+    padding-left: 2.4em;
+    padding-right: 2em;
+  }
+
+  .forecast-tips-inner {
+    margin-left: 0;
+    gap: 2em;
+  }
+
+  .forecast-leaf-icon {
+    font-size: 2.4em;
+  }
+
+  .forecast-detail-high {
+    font-size: 2.8em;
+  }
+
+  .forecast-detail-low {
+    font-size: 2.2em;
+  }
+
+  .footer-container {
+    padding: 4em 3em 5em 3em;
+    gap: 3em;
+  }
+}
+
+@media (max-width: 480px) {
   html {
     font-size: 50%;
+  }
+
+  .current-tip {
+    font-size: 2em;
+  }
+
+  .current-leaf-icon {
+    font-size: 3em;
+  }
+
+  .forecast-day-container {
+    grid-template-columns: 15fr 31fr 45fr 9fr;
+    padding: 1em 2em 1em 1em;
+  }
+
+  .forecast-list {
+    padding-left: 1em;
+  }
+
+  .sm-svg-icon {
+    height: 6em;
+    width: 6em;
+  }
+
+  .forecast-detail-high {
+    font-size: 2.6em;
+  }
+
+  .forecast-detail-low {
+    font-size: 2em;
+  }
+
+  .forecast-description {
+    font-size: 2em;
+  }
+
+  .forecast-tip-text {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 385px) {
+  .current-details-list {
+    column-gap: 6em;
+  }
+
+  .current-detail {
+    font-size: 2.2em;
+  }
+
+  .current-tips-list {
+    padding: 1.2em 2em 3em 2em;
+    gap: 1.6em;
+  }
+
+  .current-tip {
+    font-size: 1.8em;
+  }
+
+  .current-leaf-icon {
+    font-size: 2.4em;
+  }
+
+  .forecast-day-container {
+    grid-template-columns: 19fr 38fr 34fr 9fr;
+  }
+
+  .forecast-list {
+    padding-left: 2em;
+  }
+
+  .forecast-icon-description-container {
+    display: block;
+  }
+
+  .forecast-description {
+    display: none;
+  }
+
+  .forecast-tip-text {
+    font-size: 1.8em;
+  }
+
+  .footer-container {
+    padding: 5em 2em 5.4em 2em;
+    gap: 4em;
+  }
+
+  .footer-list {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2em;
+  }
+
+  .footer-github {
+    justify-self: center;
+  }
+
+  .footer-attribute {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 340px) {
+  .current-details-list {
+    column-gap: 4.6em;
+  }
+
+  .forecast-day-container {
+    grid-template-columns: 17fr 40fr 34fr 9fr;
+  }
+
+  .forecast-list {
+    padding-left: 1em;
   }
 }

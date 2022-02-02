@@ -30,7 +30,7 @@ body {
   display: grid;
   grid-template-columns: 60fr 40fr;
   column-gap: 1.2rem;
-  padding: 3rem 3rem 1rem 3rem;
+  padding: 3rem;
 }
 
 .weather-container {
@@ -209,6 +209,7 @@ body {
   font-weight: 400;
   font-size: 1.8rem;
 }
+
 /* ==== Slider ==== */
 .slider-container-outer {
   margin-top: auto;
@@ -408,8 +409,8 @@ body {
 }
 
 .forecast-tip {
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 30fr;
 }
 
 .forecast-leaf-icon {
@@ -429,24 +430,26 @@ body {
   background-color: var(--color-primary);
   width: 100%;
   padding: 3rem 6rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .footer-list {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-bottom: 2rem;
 }
 
 .footer-list-item {
   font-size: 1.6rem;
 }
 
-.footer-center-item {
+.footer-portfolio {
   justify-self: center;
 }
 
-.footer-right-item {
+.footer-attribute {
   justify-self: right;
 }
 
