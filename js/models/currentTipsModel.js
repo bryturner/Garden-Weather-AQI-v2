@@ -115,12 +115,14 @@ class CurrentTips {
   }
 
   _findLargestPrecipPercentage(precipArray) {
+    //   Find the largest precipitation percentage in the next 3 days
     const largestPercent = Math.max(...precipArray.slice(0, 3));
     const convertedPercent = largestPercent * 100;
-    return convertedPercent;
+    return Math.trunc(convertedPercent);
   }
 
   getFuturePrecipPercentage() {
+    //   Get all precipitation percentages from api
     const precipArray = this.currentWeatherData.dailyWeatherArray.map(
       arr => arr.pop
     );
