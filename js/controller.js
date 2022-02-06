@@ -87,7 +87,7 @@ export const init = async function () {
     await controlCurrentTips();
   } catch (err) {
     displayError();
-    console.log('nope', err);
+    console.log(err);
   }
 
   initHandlers();
