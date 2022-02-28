@@ -3,7 +3,7 @@ import * as currentDayView from './views/currentWeatherView.js';
 import * as forecastDayView from './views/forecastView.js';
 import * as currentDayTipsView from './views/currentTipsView.js';
 import { displayError } from './views/errorView.js';
-import { toggleLoader } from './views/loaderView.js';
+import { toggleLoader, removeLoader } from './views/loaderView.js';
 import CurrentWeather from './models/currentDayModel.js';
 import ForecastWeather from './models/forecastDayModel.js';
 import CurrentTips from './models/currentTipsModel.js';
@@ -80,7 +80,7 @@ const initHandlers = function () {
 };
 
 export const init = async function () {
-  toggleLoader();
+  //   toggleLoader();
   try {
     await controlCurrentWeather();
     await controlForecastWeather();
@@ -91,5 +91,6 @@ export const init = async function () {
   }
 
   initHandlers();
-  toggleLoader();
+  removeLoader();
+  //   toggleLoader();
 };
