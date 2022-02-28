@@ -91,6 +91,5 @@ export const init = async function () {
   }
 
   initHandlers();
-  removeLoader();
   toggleLoader();
 };
