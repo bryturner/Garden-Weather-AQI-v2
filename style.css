@@ -13,147 +13,6 @@ html {
   font-size: 62.5%;
 }
 
-/* ==== Loader + Animation ==== */
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  z-index: 99;
-  background-color: var(--color-primary-light);
-}
-
-.loader-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 250px;
-  width: 250px;
-}
-
-.middle-flower {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-}
-
-.petal {
-  position: absolute;
-  height: 90px;
-  width: 90px;
-  opacity: 1;
-  animation: addColor 1.35s ease-in-out infinite;
-}
-
-.p1 {
-  left: 50px;
-  background-color: #cc0099;
-  clip-path: ellipse(50% 16% at 50% 50%);
-}
-
-.p2 {
-  transform: rotate(45deg);
-  left: 39px;
-  bottom: -28px;
-  background-color: #990099;
-  clip-path: ellipse(50% 16% at 50% 50%);
-  animation-delay: -1.05s;
-}
-
-.p3 {
-  left: 5px;
-  bottom: -40px;
-  background-color: #74018b;
-  clip-path: ellipse(16% 50% at 50% 50%);
-  animation-delay: -0.9s;
-}
-
-.p4 {
-  transform: rotate(135deg);
-  left: -28px;
-  bottom: -28px;
-  background-color: #0051d4;
-  clip-path: ellipse(50% 16% at 50% 50%);
-  animation-delay: -0.75s;
-}
-
-.p5 {
-  left: -39px;
-  background-color: #009900;
-  clip-path: ellipse(50% 16% at 50% 50%);
-  animation-delay: -0.6s;
-}
-
-.p6 {
-  transform: rotate(-135deg);
-  left: -28px;
-  bottom: 39px;
-  background-color: #66cc00;
-  clip-path: ellipse(50% 16% at 50% 50%);
-  animation-delay: -0.45s;
-}
-
-.p7 {
-  left: 5px;
-  bottom: 50px;
-  background-color: #ff9900;
-  clip-path: ellipse(16% 50% at 50% 50%);
-  animation-delay: -0.3s;
-}
-
-.p8 {
-  transform: rotate(-45deg);
-  left: 39px;
-  bottom: 39px;
-  background-color: #ff0000;
-  clip-path: ellipse(50% 16% at 50% 50%);
-  animation-delay: -0.15s;
-}
-@keyframes addColor {
-  0% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.4;
-  }
-}
-
-.center-flower {
-  height: 53px;
-  width: 53px;
-  background-color: #ffdc4e;
-  border: 1px solid #111;
-  border-radius: 50%;
-  z-index: 5;
-  animation: fade 3s ease-in-out infinite;
-}
-
-@keyframes fade {
-  0% {
-    background-color: #ffdc4e;
-  }
-  50% {
-    background-color: #f8b729;
-  }
-
-  100% {
-    background-color: #ffdc4e;
-  }
-}
-
 body {
   background-image: url(./img/flowers.jpg);
   font-weight: 500;
@@ -599,7 +458,7 @@ body {
   font-size: 1.6rem;
 }
 
-/* ==== Loader + Animation ====
+/* ==== Loader + Animation ==== */
 .loader {
   display: flex;
   justify-content: center;
@@ -738,7 +597,7 @@ body {
   100% {
     background-color: #ffdc4e;
   }
-} */
+}
 
 /* Hide elements */
 .collapsed {
