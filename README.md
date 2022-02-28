@@ -1,6 +1,7 @@
 # Gardening Weather and Air Quality
 
-This app displays the current weather, air quality index and forecast to users based on their ip address location. It is designed for users who garden and need specific information and recommendations related to gardening. 
+This app displays the current weather, air quality index and forecast to users based on their ip address location. It is designed for users who garden and need specific information and recommendations related to gardening. </br>
+Check it out [here](https://bryturner.github.io/Garden-Weather-AQI-v2/)
 
 <img width="1422" alt="weather app displayed on a laptop and smartphone" src="https://user-images.githubusercontent.com/91684316/155932105-cbd22815-556d-4451-b414-dd127b791605.png">
 
@@ -10,8 +11,6 @@ This app displays the current weather, air quality index and forecast to users b
 - HTML
 - OpenWeather API
 - IPinfo API
-
-
 
 ## Features
 - Responsive design
@@ -28,5 +27,6 @@ I designed and built this project end to end without following any specific tuto
 - Search input box for users to find information about locations different from their own 
 - Specific recommendations based on the time of year 
 
-
-[LinkedIn Profile](https://www.linkedin.com/in/bryanturnerdev/)
+## Author
+Bryan Turner
+[My LinkedIn Profile](https://www.linkedin.com/in/bryanturnerdev/)
