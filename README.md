@@ -10,7 +10,7 @@ This app displays the current weather, air quality index and forecast to users b
 - CSS
 - HTML
 - OpenWeather API
-- IPinfo API</br>
+- IPinfo API
 
 ## Features
 - Responsive design
