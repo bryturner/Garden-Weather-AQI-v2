@@ -2,9 +2,7 @@
 
 This app displays the current weather, air quality index and forecast to users based on their ip address location. It is designed for users who garden and need specific information and recommendations related to gardening. 
 
-<img width="1422" alt="Screen Shot 2022-02-27 at 9 32 32 PM" src="https://user-images.githubusercontent.com/91684316/155927258-ceee1897-fdb3-4785-9c98-c268a84d202a.png">
-
-
+<img width="1422" alt="weather app displayed on a laptop and smartphone" src="https://user-images.githubusercontent.com/91684316/155932105-cbd22815-556d-4451-b414-dd127b791605.png">
 
 ## Technologies
 - JavaScript
@@ -12,7 +10,6 @@ This app displays the current weather, air quality index and forecast to users b
 - HTML
 - OpenWeather API
 - IPinfo API
-![weather-lap-phone](https://user-images.githubusercontent.com/91684316/155932105-cbd22815-556d-4451-b414-dd127b791605.png)
 
 ## Features
 - Responsive design
