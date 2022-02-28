@@ -1,7 +1,7 @@
 # Gardening Weather and Air Quality
 
 This app displays the current weather, air quality index and forecast to users based on their ip address location. It is designed for users who garden and need specific information and recommendations related to gardening. </br></br>
->>> Check out this project [here.](https://bryturner.github.io/Garden-Weather-AQI-v2/)<<<
+-> Check out this project [here.](https://bryturner.github.io/Garden-Weather-AQI-v2/)<-
 
 <img width="1422" alt="weather app displayed on a laptop and smartphone" src="https://user-images.githubusercontent.com/91684316/155932105-cbd22815-556d-4451-b414-dd127b791605.png">
 
