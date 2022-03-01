@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background-image: url(./img/flowers.jpg);
+  background-color: var(--color-primary-light);
   font-weight: 500;
   background-size: cover;
   background-position: top left;
@@ -33,7 +33,6 @@ body {
 }
 
 .weather-container {
-  background-color: var(--color-primary);
   padding: 2rem;
   border-radius: 12px;
   position: relative;

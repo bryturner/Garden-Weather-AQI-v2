@@ -2,6 +2,7 @@ import * as model from './models/model.js';
 import * as currentDayView from './views/currentWeatherView.js';
 import * as forecastDayView from './views/forecastView.js';
 import * as currentDayTipsView from './views/currentTipsView.js';
+import * as view from './views/view.js';
 import { displayError } from './views/errorView.js';
 import { toggleLoader } from './views/loaderView.js';
 import CurrentWeather from './models/currentDayModel.js';
@@ -89,7 +90,8 @@ export const init = async function () {
     displayError();
     console.log(err);
   }
-
+  view.addStyles();
+  view.displayFooter();
   initHandlers();
   toggleLoader();
 };
