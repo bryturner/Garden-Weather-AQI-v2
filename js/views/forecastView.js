@@ -72,7 +72,7 @@ export const displayForecastDay = forecastDay => {
         <ion-icon name="leaf" class="forecast-leaf-icon"></ion-icon>
         <p class="forecast-tip-text">
           Today will be ${forecastDay.weatherDescriptionLowerCase} with a ${forecastDay.precipPercentage}% chance of
-          precipitation today.
+          precipitation.
         </p>
       </div>
       <div class="forecast-tip">
