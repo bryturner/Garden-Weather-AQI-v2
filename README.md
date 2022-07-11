@@ -22,8 +22,6 @@ This app displays the current weather, air quality index and forecast to users b
 I designed and built this project end to end without following any specific tutorial. My goal was to learn by doing and gain more experience using JavaScript ES6+ features. I decided to use a MVC design pattern and JS classes to practice separation of concerns and functional programming principles. I also worked on connecting to third party APIs, async/await syntax, and promises.     
 
 ## Improvements and Future Features
-- Fix the bug that occurs before the loader is displayed
-- Add more ways to catch and handle errors
 - Search input box for users to find information about locations different from their own 
 - Specific recommendations based on the time of year 
 
